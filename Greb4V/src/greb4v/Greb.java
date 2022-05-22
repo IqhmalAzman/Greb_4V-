@@ -4,17 +4,20 @@
  */
 package greb4v;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Admin
  */
-public class Greb4V {
+public class Greb {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       
     }
     
 }
