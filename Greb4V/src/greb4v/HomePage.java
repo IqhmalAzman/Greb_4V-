@@ -30,15 +30,19 @@ public class HomePage {
         // add call class for admin, customer, add/remove
         switch(input){
             case "A" : {
+                System.out.println("A");
                 break;
             }
             case "B" : {
+                System.out.println("B");
                 break;
             }
             case "C" : {
+                System.out.println("C");
                 break;
             }
             default : {
+                System.out.println("default");
                 break;
             }
         }
