@@ -8,28 +8,28 @@ package greb4v;
  *
  * @author Admin
  */
-public class CustomerProfile {
-    String customer, status;
-    int EAT, capacity;
-    double[] coorStart, coorEnd = new double[2];
+public class CustomerProfile extends Profile {
 
-    public CustomerProfile(String cutomer, String status, int EAT, int capacity,
-            double[] coorStart, double[] coorEnd) {
-        
-        this.customer = customer;
-        this.status = status;
-        this.EAT =EAT;
-        this.capacity = capacity;
-        this.coorStart = coorStart;
-        this.coorEnd = coorEnd;
+    private double fiLan, fiLong;
+    private int EAT;
+    private String status;
 
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerProfile{" + "customer=" + customer + ", status=" + status + ", EAT=" + EAT + ", capacity=" + capacity + ", coorStart=" + coorStart + ", coorEnd=" + coorEnd + '}';
+    public CustomerProfile(String name, int EAT, int cap, double iniLan, double iniLong, double fiLan, double fiLong) {
+        super(name, cap, iniLan, iniLong);
+        this.fiLan = fiLan;
+        this.fiLong = fiLong;
+        this.EAT = EAT;
+        this.status = "Pending";
     }
     
-    
+    public void headingDisplay(){
+        System.out.printf("%s %20s %20s %20s %20s %20s \n", "Customer", "Status", 
+                "Expected Arrival Time", "Capacity", "Starting Point", "Destination");
+    }
+
+    public void display() {
+        System.out.printf("%s %20s %20s %20s %20s,%s %20s,%s \n", this.getName(), status, 
+                EAT, this.getCap(), this.getIniLan(), this.getIniLong(), fiLan, fiLong);
+    }
 
 }
