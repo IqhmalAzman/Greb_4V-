@@ -45,7 +45,7 @@ public class Main {
                     break;
                 }
                 case "B": {
-                    System.out.println("B");
+                    manageCustomer();
                     break;
                 }
                 case "C": {
@@ -66,6 +66,42 @@ public class Main {
 
         d.display();
 
+    }
+    
+    public static void manageCustomer() {
+        System.out.println("You are in customer view now (Enter \"exit\" to go back to homepage):");
+        System.out.println("Options :");
+        System.out.println("A - Create customer requests");
+        System.out.println("B - Update customer requests");
+
+        String custInput, chooseDriver = "";
+
+        Scanner scan = new Scanner(System.in);
+        custInput = scan.nextLine().toUpperCase();
+
+        Customer c = new Customer();
+
+        switch (custInput) {
+            case "A": {
+                System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
+                System.out.println("(Enter \"exit\" to go back to homepage):");
+                System.out.print(">> ");
+                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
+                
+                System.out.println("\nThe request is received, please choose tour driver...");
+                
+                d.display();
+              
+                System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
+                System.out.print(">> ");
+                chooseDriver = scan.nextLine();
+                System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
+            }
+            
+            case "B": {
+                //update customer requests - for customers who have given details but exit to homepage
+            }
+        }
     }
 
     public static void manageDriver() {
