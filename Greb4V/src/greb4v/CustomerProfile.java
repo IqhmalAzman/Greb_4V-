@@ -4,6 +4,8 @@
  */
 package greb4v;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Admin
@@ -21,15 +23,24 @@ public class CustomerProfile extends Profile {
         this.EAT = EAT;
         this.status = "Pending";
     }
-    
-    public void headingDisplay(){
-        System.out.printf("%s %20s %20s %20s %20s %20s \n", "Customer", "Status", 
-                "Expected Arrival Time", "Capacity", "Starting Point", "Destination");
+
+    public double getFiLan() {
+        return fiLan;
     }
 
-    public void display() {
-        System.out.printf("%s %20s %20s %20s %20s,%s %20s,%s \n", this.getName(), status, 
-                EAT, this.getCap(), this.getIniLan(), this.getIniLong(), fiLan, fiLong);
+    public double getFiLong() {
+        return fiLong;
     }
 
+    public int getEAT() {
+        return EAT;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
