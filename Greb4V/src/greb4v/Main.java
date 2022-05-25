@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Main {
 
     public static Driver d = new Driver();
+
     /**
      * @param args the command line arguments
      */
@@ -20,60 +21,64 @@ public class Main {
         // TODO code application logic here
 
         String input;
+        boolean start = true; //this may be temp
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("welcome to Greb Application!");
-        System.out.println("Options : ");
-        
-        do{
-        System.out.println("(Current time : "); // add time here
-        System.out.println("A - View System Dashboard");
-        System.out.println("B - enter Customer View");
-        System.out.println("C - Add / Remove Driver");
+        do {
+            System.out.println("\nwelcome to Greb Application!");
+            System.out.println("Options : ");
+            System.out.println("(Current time : noTime)"); // add time here
+            System.out.println("A - View System Dashboard");
+            System.out.println("B - enter Customer View");
+            System.out.println("C - Add / Remove Driver");
+            System.out.println("");
 
-        input = scan.nextLine().toUpperCase();
+            System.out.print(">> ");
 
-        // add call class for admin, customer, add/remove
-        switch (input) {
-            case "A": {
-                manageAdmin();
-                break;
+            input = scan.nextLine().toUpperCase();
+
+            // add call class for admin, customer, add/remove
+            switch (input) {
+                case "A": {
+                    manageAdmin();
+                    break;
+                }
+                case "B": {
+                    System.out.println("B");
+                    break;
+                }
+                case "C": {
+                    manageDriver();
+                    break;
+                }
+                default: {
+                    start = false;
+                    break;
+                }
             }
-            case "B": {
-                System.out.println("B");
-                break;
-            }
-            case "C": {
-                manageDriver();
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-        }while(true);
+        } while (start);
 
     }
 
-    public static void manageAdmin(){
-        System.out.println("System Dashboard : \n");
-        
-        
+    public static void manageAdmin() {
+        System.out.println("\nSystem Dashboard : \n");
+
         d.display();
-        
+
     }
-    
+
     public static void manageDriver() {
 
         boolean stop = false;
-         
+
         do {
-            System.out.println("Are you trying to add or remove a driver? (Enter \"exit\" to go to home page)");
+            System.out.println("\nAre you trying to add or remove a driver? (Enter \"exit\" to go to home page)");
             System.out.println("A - Add new driver");
             System.out.println("B - Remove driver");
+            System.out.println("");
+            System.out.print(">> ");
 
-           
             String input;
 
             Scanner scan = new Scanner(System.in);
@@ -93,18 +98,17 @@ public class Main {
                     d.display();
                     break;
                 }
-                case "EXIT" :{
+                case "EXIT": {
                     stop = true;
                     break;
                 }
-                default : {
+                default: {
                     stop = true;
                 }
             }
-            
-        } while(stop == false);
-        
-        
+
+        } while (stop == false);
+
     }
 
 }

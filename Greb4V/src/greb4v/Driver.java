@@ -37,7 +37,7 @@ public class Driver {
     public void display() {
         System.out.println("Driver List (List Last Updated Time : NoTIme)");
         System.out.println("(Current time : NoTime)");
-        System.out.println("==============");
+        System.out.println("=========================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
@@ -45,6 +45,6 @@ public class Driver {
                     driverProfile.getCap(), driverProfile.getIniLan() + "," + driverProfile.getIniLong(), "customer");
         }
 
-        System.out.println("==============");
+        System.out.println("=========================================================================================================");
     }
 }
