@@ -17,40 +17,83 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         String input;
-        
+
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.println("welcome to Greb Application!");
         System.out.println("Options : ");
-        System.out.println("(Current time : " ); // add time here
+        System.out.println("(Current time : "); // add time here
         System.out.println("A - View System Dashboard");
         System.out.println("B - enter Customer View");
         System.out.println("C - Add / Remove Driver");
-        
+
         input = scan.nextLine().toUpperCase();
-        
+
         // add call class for admin, customer, add/remove
-        switch(input){
-            case "A" : {
+        switch (input) {
+            case "A": {
                 System.out.println("A");
                 break;
             }
-            case "B" : {
+            case "B": {
                 System.out.println("B");
                 break;
             }
-            case "C" : {
-                System.out.println("C");
+            case "C": {
+                manageDriver();
                 break;
             }
-            default : {
+            default: {
                 System.out.println("default");
                 break;
             }
         }
+
     }
+
+    public static void manageDriver() {
+
+        boolean stop = false;
+         Driver d = new Driver();
+        do {
+            System.out.println("Are you trying to add or remove a driver? (Enter \"exit\" to go to home page)");
+            System.out.println("A - Add new driver");
+            System.out.println("B - Remove driver");
+
+           
+            String input;
+
+            Scanner scan = new Scanner(System.in);
+
+            input = scan.next().toUpperCase();
+
+            switch (input) {
+                case "A": {
+                    d.add(new DriverProfile("Driver 1", 5, 22, 33));
+                    d.display();
+                    break;
+                }
+                case "B": {
+                    scan = new Scanner(System.in);
+                    d.display();
+                    d.remove(scan.nextLine());
+                    d.display();
+                    break;
+                }
+                case "EXIT" :{
+                    stop = true;
+                    break;
+                }
+                default : {
+                    stop = true;
+                }
+            }
+            
+        } while(stop == false);
     
-    
+        
+    }
+
 }
