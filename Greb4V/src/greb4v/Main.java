@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class Main {
 
+    public static Driver d = new Driver();
     /**
      * @param args the command line arguments
      */
@@ -24,6 +25,8 @@ public class Main {
 
         System.out.println("welcome to Greb Application!");
         System.out.println("Options : ");
+        
+        do{
         System.out.println("(Current time : "); // add time here
         System.out.println("A - View System Dashboard");
         System.out.println("B - enter Customer View");
@@ -34,7 +37,7 @@ public class Main {
         // add call class for admin, customer, add/remove
         switch (input) {
             case "A": {
-                System.out.println("A");
+                manageAdmin();
                 break;
             }
             case "B": {
@@ -46,17 +49,25 @@ public class Main {
                 break;
             }
             default: {
-                System.out.println("default");
                 break;
             }
         }
+        }while(true);
 
     }
 
+    public static void manageAdmin(){
+        System.out.println("System Dashboard : \n");
+        
+        
+        d.display();
+        
+    }
+    
     public static void manageDriver() {
 
         boolean stop = false;
-         Driver d = new Driver();
+         
         do {
             System.out.println("Are you trying to add or remove a driver? (Enter \"exit\" to go to home page)");
             System.out.println("A - Add new driver");
@@ -92,7 +103,7 @@ public class Main {
             }
             
         } while(stop == false);
-    
+        
         
     }
 
