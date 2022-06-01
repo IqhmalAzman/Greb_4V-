@@ -14,7 +14,7 @@ public class Main {
 
     public static Customer c = new Customer();
     public static Driver d = new Driver();
-
+    
     /**
      * @param args the command line arguments
      */
@@ -78,8 +78,9 @@ public class Main {
         System.out.println("Options :");
         System.out.println("A - Create customer requests");
         System.out.println("B - Update customer requests");
+        System.out.print(">> ");
 
-        String custInput, chooseDriver = "";
+        String custInput, chooseDriver, updateCust = "";
 
         Scanner scan = new Scanner(System.in);
         custInput = scan.nextLine().toUpperCase();
@@ -93,7 +94,7 @@ public class Main {
                 System.out.print(">> ");
                 c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                 
-                System.out.println("\nThe request is received, please choose tour driver...");
+                System.out.println("\nThe request is received, please choose your driver...");
                 
                 d.display();
               
@@ -101,10 +102,23 @@ public class Main {
                 System.out.print(">> ");
                 chooseDriver = scan.nextLine();
                 System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
+                break;
             }
             
             case "B": {
                 //update customer requests - for customers who have given details but exit to homepage
+                c.display();
+                System.out.println("\nEnter the customer name you want to update (Enter \"exit\" to go back to homepage):");
+                System.out.print(">> ");
+                updateCust = scan.nextLine();
+                System.out.println("");
+                
+                d.display();
+              
+                System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
+                System.out.print(">> ");
+                chooseDriver = scan.nextLine();
+                System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
             }
         }
     }
