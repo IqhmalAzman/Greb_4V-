@@ -33,7 +33,7 @@ public class Customer {
     }
 
     public void display() {
-        System.out.println("==============");
+        System.out.println("=====================================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Customer", "Status", "Expected Arrival Time",
                 "Capacity", "Starting Point", "Destination");
         for (CustomerProfile customerProfile : customer) {
@@ -42,6 +42,6 @@ public class Customer {
                     customerProfile.getIniLong(), customerProfile.getFiLan() + "," + customerProfile.getFiLong());
         }
 
-        System.out.println("==============");
+        System.out.println("=====================================================================================================================");
     }
 }
