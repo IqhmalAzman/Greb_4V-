@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package greb4v;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin
- */
 public class Driver {
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
@@ -35,28 +26,24 @@ public class Driver {
     }
 
     public void display() {
-//        System.out.println("Driver List (List Last Updated Time : NoTIme)");
-//        System.out.println("(Current time : NoTime)");
         System.out.println("=========================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
             System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
-                    driverProfile.getCap(), driverProfile.getIniLan() + "," + driverProfile.getIniLong(), "customer");
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), "customer");
         }
 
         System.out.println("=========================================================================================================");
     }
     
     public void displayRating() {
-        System.out.println("Driver List (List Last Updated Time : NoTIme)");
-        System.out.println("(Current time : NoTime)");
         System.out.println("=========================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer", "Rating");
         for (DriverProfile driverProfile : driver) {
             System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
-                    driverProfile.getCap(), driverProfile.getIniLan() + "," + driverProfile.getIniLong(), "customer", driverProfile.getRating());
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), "customer", driverProfile.getRating());
         }
 
         System.out.println("=========================================================================================================");

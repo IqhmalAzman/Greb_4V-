@@ -1,15 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package greb4v;
 
-import java.util.Arrays;
-
-/**
- *
- * @author Admin
- */
 public class CustomerProfile extends Profile {
 
     private double fiLan, fiLong;

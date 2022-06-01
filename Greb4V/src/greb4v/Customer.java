@@ -33,15 +33,15 @@ public class Customer {
     }
 
     public void display() {
-        System.out.println("=====================================================================================================================");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Customer", "Status", "Expected Arrival Time",
+        System.out.println("==================================================================================================================================");
+        System.out.printf("%-20s %-20s %-25s %-20s %-20s %-20s\n", "Customer", "Status", "Expected Arrival Time",
                 "Capacity", "Starting Point", "Destination");
         for (CustomerProfile customerProfile : customer) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s, %-20s\n", customerProfile.getName(), "Status", 
-                customerProfile.getEAT(), customerProfile.getCap(), customerProfile.getIniLan() + "," + 
-                    customerProfile.getIniLong(), customerProfile.getFiLan() + "," + customerProfile.getFiLong());
+            System.out.printf("%-20s %-20s %-25s %-20s %-20s %-20s\n", customerProfile.getName(), "Status", 
+                customerProfile.getEAT(), customerProfile.getCapacity(), customerProfile.getInitialLatitude() + "," + 
+                    customerProfile.getInitialLongitude(), customerProfile.getFiLan() + "," + customerProfile.getFiLong());
         }
 
-        System.out.println("=====================================================================================================================");
+        System.out.println("==================================================================================================================================");
     }
 }

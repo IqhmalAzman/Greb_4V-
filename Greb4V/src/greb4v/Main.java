@@ -1,24 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package greb4v;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Admin
- */
 public class Main {
 
     public static Customer c = new Customer();
     public static Driver d = new Driver();
     public static Time t = new Time();
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         // TODO code application logic here
@@ -34,9 +23,8 @@ public class Main {
             System.out.println("A - View System Dashboard");
             System.out.println("B - enter Customer View");
             System.out.println("C - Add / Remove Driver");
-            System.out.println("");
 
-            System.out.print(">> ");
+            System.out.print("\n>> ");
 
             input = scan.nextLine().toUpperCase();
 
@@ -65,23 +53,27 @@ public class Main {
 
     public static void manageAdmin() {
         System.out.println("\nSystem Dashboard : \n");
-        System.out.println("Requests List (List Last Updated Time : noTime");
         System.out.println("(Current time : " + t.time() + " )");
 
+        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("(Current time : " + t.time() + " )");
         c.display();
-        System.out.println("");
+
+        System.out.println("\nRequests List (List Last Updated Time : noTime");
+        System.out.println("(Current time : " + t.time() + " )");
         d.display();
 
     }
 
     public static void manageCustomer() {
-        System.out.println("You are in customer view now (Enter \"exit\" to go back to homepage):");
+        System.out.println("\nYou are in customer view now (Enter \"exit\" to go back to homepage):");
         System.out.println("Options :");
         System.out.println("A - Create customer requests");
         System.out.println("B - Update customer requests");
-        System.out.print(">> ");
+        System.out.print("\n>> ");
 
-        String custInput, chooseDriver, updateCust = "";
+        String custInput, chooseDriver;
+//        String updateCust; //for later to update
 
         Scanner scan = new Scanner(System.in);
         custInput = scan.nextLine().toUpperCase();
@@ -90,20 +82,21 @@ public class Main {
             case "A": {
                 System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
                 System.out.println("(Enter \"exit\" to go back to homepage):");
-                System.out.print(">> ");
+                System.out.print("\n>> ");
                 c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
 
                 System.out.println("\nThe request is received, please choose your driver...");
-                
+
+                System.out.println("Requests List (List Last Updated Time : noTime");
+                System.out.println("(Current time : " + t.time() + " )");
                 d.displayRating();
-              
 
                 System.out.println("Driver List (List Last Updated Time : NoTIme)");
                 System.out.println("(Current time : " + t.time() + " )");
                 d.display();
 
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
-                System.out.print(">> ");
+                System.out.print("\n>> ");
                 chooseDriver = scan.nextLine();
                 System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
                 break;
@@ -114,9 +107,10 @@ public class Main {
                 System.out.println("Driver List (List Last Updated Time : NoTIme)");
                 System.out.println("(Current time : " + t.time() + " )");
                 c.display();
+
                 System.out.println("\nEnter the customer name you want to update (Enter \"exit\" to go back to homepage):");
-                System.out.print(">> ");
-                updateCust = scan.nextLine();
+                System.out.print("\n>> ");
+//                updateCust = scan.nextLine(); for later
                 System.out.println("");
 
                 System.out.println("Driver List (List Last Updated Time : NoTIme)");
@@ -124,7 +118,7 @@ public class Main {
                 d.display();
 
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
-                System.out.print(">> ");
+                System.out.print("\n>> ");
                 chooseDriver = scan.nextLine();
                 System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
             }
@@ -139,8 +133,7 @@ public class Main {
             System.out.println("\nAre you trying to add or remove a driver? (Enter \"exit\" to go to home page)");
             System.out.println("A - Add new driver");
             System.out.println("B - Remove driver");
-            System.out.println("");
-            System.out.print(">> ");
+            System.out.print("\n>> ");
 
             String input;
 
@@ -150,6 +143,7 @@ public class Main {
 
             switch (input) {
                 case "A": {
+                    // this is hard coded need input later
                     d.add(new DriverProfile("Driver 1", 5, 22, 33));
 
                     System.out.println("Driver List (List Last Updated Time : NoTIme)");
@@ -164,6 +158,9 @@ public class Main {
                     System.out.println("(Current time : " + t.time() + " )");
                     d.display();
                     d.remove(scan.nextLine());
+
+                    System.out.println("Driver List (List Last Updated Time : NoTIme)");
+                    System.out.println("(Current time : " + t.time() + " )");
                     d.display();
                     break;
                 }
