@@ -39,8 +39,4 @@ public class CustomerProfile extends Profile {
     public String getStatus() {
         return status;
     }
-
-    public String getName() {
-        return name;
-    }
 }

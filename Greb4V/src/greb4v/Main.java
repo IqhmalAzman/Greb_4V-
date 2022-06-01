@@ -12,12 +12,15 @@ import java.util.Scanner;
  */
 public class Main {
 
+    public static Customer c = new Customer();
     public static Driver d = new Driver();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         // TODO code application logic here
 
         String input;
@@ -64,6 +67,8 @@ public class Main {
     public static void manageAdmin() {
         System.out.println("\nSystem Dashboard : \n");
 
+        c.display();
+        System.out.println("");
         d.display();
 
     }
@@ -79,7 +84,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         custInput = scan.nextLine().toUpperCase();
 
-        Customer c = new Customer();
+        
 
         switch (custInput) {
             case "A": {
