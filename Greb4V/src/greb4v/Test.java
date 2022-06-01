@@ -14,31 +14,46 @@ import java.util.concurrent.TimeUnit;
 public class Test {
 
     public static void main(String[] args) {
-        Date d1 = new Date();
-        System.out.println("Current date is " + d1);
-        System.out.println(d1);
-        
-        int counMin = 0;
-        int counHr = 0;
-        
-        while (true) {
-            try {
-                Thread.sleep(100);
+        try {
+            long a = getTime();
+            System.out.println("Time: " + a);
 
-                counMin++;
-                if(counMin == 60){
-                    counMin = 0;
-                    counHr++;
-                }
-                System.out.println(counHr + ":" + counMin);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
+            Thread.sleep(20000);
+
+            long b = getTime();
+            System.out.println("Time: " + b);
+            System.out.println("Total time: " + calcTime(a, b));
+
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public static long getTime() {
+        Date d1 = new Date();
+        return d1.getTime();
+    }
+
+    public static String calcTime(long t1, long t2) {
+        int time = (int) (t2 - t1);
+//        int time = 309000;
+        int timeInSec = (time / 1000);
+
+        int mm = (timeInSec / 60);
+        int ss = (timeInSec - (mm * 60));
+
+        String displayMM = String.valueOf(mm % 24);
+        String displaySS = String.valueOf(ss);
+
+        if (mm % 24 < 10) {
+            displayMM = "0" + displayMM;
         }
 
+        if (ss < 10) {
+            displaySS = "0" + displaySS;
+        }
+
+        return displayMM + displaySS;
     }
-    
-    
-    
-    
+
 }

@@ -43,9 +43,4 @@ public class Profile{
     public String toString() {
         return "Profile{" + "name=" + name + ", cap=" + cap + ", iniLan=" + iniLan + ", iniLong=" + iniLong + '}';
     }
-
- 
-    
-
-  
 }
