@@ -94,6 +94,9 @@ public class Main {
                 c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
 
                 System.out.println("\nThe request is received, please choose your driver...");
+                
+                d.displayRating();
+              
 
                 System.out.println("Driver List (List Last Updated Time : NoTIme)");
                 System.out.println("(Current time : " + t.time() + " )");

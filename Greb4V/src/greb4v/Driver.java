@@ -47,4 +47,18 @@ public class Driver {
 
         System.out.println("=========================================================================================================");
     }
+    
+    public void displayRating() {
+        System.out.println("Driver List (List Last Updated Time : NoTIme)");
+        System.out.println("(Current time : NoTime)");
+        System.out.println("=========================================================================================================");
+        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
+                "Capacity", "Location", "Customer", "Rating");
+        for (DriverProfile driverProfile : driver) {
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
+                    driverProfile.getCap(), driverProfile.getIniLan() + "," + driverProfile.getIniLong(), "customer", driverProfile.getRating());
+        }
+
+        System.out.println("=========================================================================================================");
+    }
 }
