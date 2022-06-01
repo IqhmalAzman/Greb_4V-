@@ -96,7 +96,7 @@ public class Main {
                 
                 System.out.println("\nThe request is received, please choose your driver...");
                 
-                d.display();
+                d.displayRating();
               
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                 System.out.print(">> ");
