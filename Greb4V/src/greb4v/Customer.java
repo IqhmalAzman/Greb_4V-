@@ -70,6 +70,15 @@ public class Customer {
         }
         return 0.0;
     }
+    
+    public int getCap(String name){
+        for (CustomerProfile customerProfile : customer) {
+            if(findCustomer(name)){
+                return customerProfile.getCapacity();
+            }
+        }
+        return -1;
+    }
 
     public void display() {
         System.out.println("==================================================================================================================================");

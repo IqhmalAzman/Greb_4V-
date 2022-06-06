@@ -15,28 +15,34 @@ public class Driver{
             System.out.println("List is empty");
         } else {
             for (DriverProfile driverProfile : driver) {
-                int i = 0;
-                if (driverProfile.getName().equalsIgnoreCase(name)) {
-                    driver.remove(i);
+                if (findDriver(name)) {
+                    driver.remove(name);
                     break;
                 }
-                i++;
             }
         }
     }
     
-   public void assignCustomer(String name, String customerName){ //updating location, customer, status
+    public boolean findDriver(String name){
+        for (DriverProfile driverProfile : driver) {
+            if(name.equalsIgnoreCase(driverProfile.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
+   public void assignCustomer(String driverName, String customerName){ //updating location, customer, status
         if (driver.size() == 0) {
             System.out.println("List is empty");
         } else {
             for (DriverProfile driverProfile : driver) {
-                int i = 0;
-                if (driverProfile.getName().equalsIgnoreCase(name)) {
+                if (findDriver(driverName)) {
                     driverProfile.setStatus("Not Available");
                     driverProfile.setCustomer(customerName);
                     break;
                 }
-                i++;
             }
         }
         

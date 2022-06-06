@@ -136,16 +136,18 @@ public class Main {
                 if (c.findCustomer(customerName)) {
                     System.out.println("\nThe request is received, please choose your driver...");
 
-                    System.out.println("Driver List (List Last Updated Time : NoTIme)");
-                    System.out.println("(Current time : " + t.time() + " )");
-                    d.display();
+                        System.out.println("Requests List (List Last Updated Time : noTime");
+                        System.out.println("(Current time : " + t.time() + " )");
+                        d.displayRating(c.getCap(customerName));
 
-                    System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
-                    System.out.print("\n>> ");
-                    String driverName = scan.nextLine();
+                        System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
+                        System.out.print("\n>> ");
+                        String driverName = scan.nextLine();
 
-                    c.pending(customerName);
-                    System.out.println("\n" + driverName + " is on the way to pick you up.");
+                        d.assignCustomer(driverName, customerName);
+                        c.pending(customerName);
+
+                        System.out.println("\n" + driverName + " is on the way to pick you up.");
                 }
             }
         }
