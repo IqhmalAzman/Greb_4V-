@@ -2,7 +2,7 @@ package greb4v;
 
 import java.util.ArrayList;
 
-public class Driver extends DriverProfile{
+public class Driver{
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
 
