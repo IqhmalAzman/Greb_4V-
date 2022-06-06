@@ -3,10 +3,15 @@ package greb4v;
 public class Calculation {
 
     private int min;
+    
 
     // assuming speed 60km/h
     public void calculation(double distance) {
         this.min = (int) Math.ceil(2.5 * distance); // 4* as additional time because its straight line
+    }
+    
+    public int calculation2(double distance) {
+        return (int) Math.ceil(2.5 * distance); // 4* as additional time because its straight line
     }
 
     public int getMin() {
@@ -38,7 +43,9 @@ public class Calculation {
     }
 
     public String customerDestinationTime(String time) {
-        int totalMin = this.min;
+//        int totalMin = this.min;
+        int totalMin = this.calculation2(min);
+        
         String displayHH = time.substring(0, 2);
         String displayMM = time.substring(2, 4);
 

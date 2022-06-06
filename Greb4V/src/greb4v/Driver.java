@@ -6,6 +6,10 @@ public class Driver {
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
     String lastUpdatedTime;
+    
+    public ArrayList<DriverProfile> referDriver(){
+        return driver;
+    }
 
     public void add(DriverProfile e, String lastUpdateTime) {
         this.lastUpdatedTime = lastUpdateTime;
