@@ -25,13 +25,13 @@ public class Time {
         int time = (int) (t2 - t1);
         int timeInSec = (time / 1000);
 
-        int mm = (timeInSec / 60);
-        int ss = (timeInSec - (mm * 60));
+        int mm = (timeInSec / 60) % 24; //24 is because we don't want to get over
+        int ss = (timeInSec % 60);
 
-        String displayMM = String.valueOf(mm % 24);
+        String displayMM = String.valueOf(mm);
         String displaySS = String.valueOf(ss);
 
-        if (mm % 24 < 10) {
+        if (mm < 10) {
             displayMM = "0" + displayMM;
         }
 

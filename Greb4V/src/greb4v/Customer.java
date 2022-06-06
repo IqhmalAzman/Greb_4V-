@@ -6,10 +6,6 @@ package greb4v;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author User
- */
 public class Customer {
     ArrayList<CustomerProfile> customer = new ArrayList<CustomerProfile>();
 

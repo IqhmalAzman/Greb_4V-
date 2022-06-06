@@ -83,6 +83,9 @@ public class Main {
                 System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
                 System.out.println("(Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
+                
+                
+                
                 c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
 
                 System.out.println("\nThe request is received, please choose your driver...");
@@ -148,8 +151,19 @@ public class Main {
 
             switch (input) {
                 case "A": {
+                    
+                    System.out.println("Enter the details of the driver you want to create (name, capacity, "
+                            + " location): ");
+                    
+                    String driverName = scan.next();
+                    int cap = scan.nextInt();
+                    String[] iniLatLan = scan.next().split(",");
+                    double iniLat = Double.parseDouble(iniLatLan[0]);
+                    double iniLan = Double.parseDouble(iniLatLan[1]);
+                    
+                    
                     // this is hard coded need input later
-                    d.add(new DriverProfile("Driver 1", 5, 22, 33));
+                    d.add(new DriverProfile(driverName, cap, iniLat, iniLan));
 
                     System.out.println("Driver List (List Last Updated Time : NoTIme)");
                     System.out.println("(Current time : " + t.time() + " )");
