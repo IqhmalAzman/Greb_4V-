@@ -29,4 +29,12 @@ public class Profile{
     public double getInitialLongitude() {
         return initialLongitude;
     }
+    
+    public void setInitialLatitude(double initialLatitude) {
+        this.initialLatitude = initialLatitude;
+    }
+
+    public void setInitialLongitude(double initialLongitude) {
+        this.initialLongitude = initialLongitude;
+    }
 }
