@@ -67,7 +67,12 @@ public class Test {
         
         System.out.println(time);
         
-        
+        //check whether customer has reached destination
+        //if yes
+        System.out.println("Rate your driver:");
+        System.out.print("\n>> ");
+        double rating = scan.nextDouble();
+        d.rating(driverName, rating); //driverName is inputted earlier when customer chose the driver
     }
 
 }
