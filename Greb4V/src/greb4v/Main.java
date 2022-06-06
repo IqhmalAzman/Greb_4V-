@@ -108,7 +108,7 @@ public class Main {
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
                 chooseDriver = scan.nextLine();
-//                d.update(, custInput, 0, 0, custInput);
+//                d.update(,
                 
                 
                 
