@@ -83,7 +83,17 @@ public class Main {
                 System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
                 System.out.println("(Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
-                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
+                String customerName = scan.nextLine();
+                int EAT = scan.nextInt();
+                int cap = scan.nextInt();
+                String[] iniLatLan = scan.next().split(",");
+                double iniLat = Double.parseDouble(iniLatLan[0]);
+                double iniLan = Double.parseDouble(iniLatLan[1]);
+                String[] finLatLan = scan.next().split(",");
+                double finLat = Double.parseDouble(finLatLan[0]);
+                double finLan = Double.parseDouble(finLatLan[1]);
+                
+                c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan));
 
                 System.out.println("\nThe request is received, please choose your driver...");
 
