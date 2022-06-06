@@ -2,18 +2,24 @@ package greb4v;
 
 import java.util.ArrayList;
 
-public class Driver{
+public class Driver {
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
+    String lastUpdatedTime;
 
-    public void add(DriverProfile e) {
+    public void add(DriverProfile e, String lastUpdateTime) {
+        this.lastUpdatedTime = lastUpdateTime;
+
         driver.add(e);
     }
-    
-    public void remove(String name) {
+
+    public void remove(String name, String lastUpdatedTime) {
+
         if (driver.size() == 0) {
             System.out.println("List is empty");
         } else {
+            this.lastUpdatedTime = lastUpdatedTime;
+
             for (DriverProfile driverProfile : driver) {
                 if (findDriver(name)) {
                     driver.remove(name);
@@ -22,21 +28,22 @@ public class Driver{
             }
         }
     }
-    
-    public boolean findDriver(String name){
+
+    public boolean findDriver(String name) {
         for (DriverProfile driverProfile : driver) {
-            if(name.equalsIgnoreCase(driverProfile.getName())){
+            if (name.equalsIgnoreCase(driverProfile.getName())) {
                 return true;
             }
         }
         return false;
     }
 
-    
-   public void assignCustomer(String driverName, String customerName){ //updating location, customer, status
+    public void assignCustomer(String driverName, String customerName, String lastUpdatedTime) { //updating location, customer, status
         if (driver.size() == 0) {
             System.out.println("List is empty");
         } else {
+            this.lastUpdatedTime = lastUpdatedTime;
+
             for (DriverProfile driverProfile : driver) {
                 if (findDriver(driverName)) {
                     driverProfile.setStatus("Not Available");
@@ -45,13 +52,13 @@ public class Driver{
                 }
             }
         }
-        
+
     }
 
     public void display(String time) {
-        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
-        
+
         System.out.println("=========================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
@@ -62,19 +69,20 @@ public class Driver{
 
         System.out.println("=========================================================================================================");
     }
-    
+
     public void displayRating(int cap, String time) {
-        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
-        
+
         System.out.println("=============================================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer", "Rating");
         for (DriverProfile driverProfile : driver) {
-            
-            if(cap <= driverProfile.getCapacity())
+
+            if (cap <= driverProfile.getCapacity()) {
                 System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
-                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer(), driverProfile.getRating());
+                        driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer(), driverProfile.getRating());
+            }
         }
 
         System.out.println("=============================================================================================================================");

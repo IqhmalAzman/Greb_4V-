@@ -53,7 +53,6 @@ public class Main {
 
     public static void manageAdmin() {
         System.out.println("\nSystem Dashboard : \n");
-        System.out.println("(Current time : " + t.time() + " )");
 
         c.display(t.time());
 
@@ -92,9 +91,13 @@ public class Main {
                         double finLat = Double.parseDouble(finLatLan[0]);
                         double finLan = Double.parseDouble(finLatLan[1]);
 
-                        c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan));
+                        c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan),
+                                t.time());
                         scan.nextLine();
 
+                        c.disTime(customerName);
+                        
+                        
         //                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
 
@@ -104,10 +107,11 @@ public class Main {
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
 
-                        d.assignCustomer(driverName, customerName);
-                        c.pending(customerName);
+                        d.assignCustomer(driverName, customerName, t.time());
+                        c.pending(customerName, t.time());
 
                         System.out.println("\n" + driverName + " is on the way to pick you up.");
+                        
                     }
                 } catch (Exception e) {
                     System.out.println("Error wrong input");
@@ -135,8 +139,8 @@ public class Main {
                     System.out.print("\n>> ");
                     String driverName = scan.nextLine();
 
-                    d.assignCustomer(driverName, customerName);
-                    c.pending(customerName);
+                    d.assignCustomer(driverName, customerName, t.time());
+                    c.pending(customerName, t.time());
 
                     System.out.println("\n" + driverName + " is on the way to pick you up.");
                 } else{
@@ -181,7 +185,7 @@ public class Main {
                             double iniLan = Double.parseDouble(iniLatLan[1]);
 
                             // this is hard coded need input later
-                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan));
+                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
 
                             d.display(t.time());
                         }
@@ -200,7 +204,7 @@ public class Main {
                     scan = new Scanner(System.in);
 
                     d.display(t.time());
-                    d.remove(scan.nextLine());
+                    d.remove(scan.nextLine(), t.time());
 
                     d.display(t.time());
                     break;

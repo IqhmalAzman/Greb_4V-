@@ -9,15 +9,20 @@ import java.util.ArrayList;
 public class Customer {
 
     ArrayList<CustomerProfile> customer = new ArrayList<CustomerProfile>();
+    String lastUpdatedTime;
 
-    public void add(CustomerProfile e) {
+    public void add(CustomerProfile e, String lastUpdatedTime) {
+        this.lastUpdatedTime = lastUpdatedTime;
+        
         customer.add(e);
     }
 
-    public void pending(String name) {
+    public void pending(String name, String lastUpdatedTime) {
         if (customer.size() == 0) {
             System.out.println("List is empty");
         } else {
+            this.lastUpdatedTime = lastUpdatedTime;
+            
             for (CustomerProfile customerProfile : customer) {
                 int i = 0;
                 if (customerProfile.getName().equalsIgnoreCase(name)) {
@@ -29,10 +34,12 @@ public class Customer {
         }
     }
 
-    public void remove(String name) {
+    public void remove(String name, String lastUpdatedTime) {
         if (customer.size() == 0) {
             System.out.println("List is empty");
         } else {
+            this.lastUpdatedTime = lastUpdatedTime;
+            
             for (CustomerProfile customerProfile : customer) {
                 int i = 0;
                 if (customerProfile.getName().equalsIgnoreCase(name)) {
@@ -79,9 +86,40 @@ public class Customer {
         }
         return -1;
     }
+    
+    public double[] coordinate(String name){
+        double[] arr = new double[4];
+        
+        for (CustomerProfile customerProfile : customer) {
+            if(findCustomer(name)){
+                arr[0] = customerProfile.getInitialLatitude();
+                arr[1] = customerProfile.getInitialLongitude();
+                arr[2] = customerProfile.getFiLan();
+                arr[3] = customerProfile.getFiLong();
+            }
+        }
+        
+        return arr;
+    }
+    
+    public void disTime(String name){
+           
+//        Distance dist = new Distance();
+        Calculation calc = new Calculation();
+        
+        double[] arr = coordinate(name);
+        
+        double dis = calc.distance(arr[0],arr[1], arr[2],arr[3]);
+
+        calc.Calculation(dis);
+
+//        calc.customerDestinationTime("1300");
+        
+        System.out.println(calc.customerDestinationTime("1300"));
+    }
 
     public void display(String time) {
-        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time  + " )");
         
         System.out.println("==================================================================================================================================");
