@@ -25,7 +25,7 @@ public class Driver{
         }
     }
     
-    public void update(String name, double fiLat, double fiLan, String customerName){ //updating location, customer, status
+   public void assignCustomer(String name, String customerName){ //updating location, customer, status
         if (driver.size() == 0) {
             System.out.println("List is empty");
         } else {
@@ -33,8 +33,6 @@ public class Driver{
                 int i = 0;
                 if (driverProfile.getName().equalsIgnoreCase(name)) {
                     driverProfile.setStatus("Not Available");
-                    driverProfile.setInitialLatitude(fiLat);
-                    driverProfile.setInitialLongitude(fiLan);
                     driverProfile.setCustomer(customerName);
                     break;
                 }
