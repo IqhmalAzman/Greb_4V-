@@ -124,8 +124,13 @@ public class Main {
 
                 System.out.println("\nEnter the customer name you want to update (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
+                String customerName = scan.nextLine();
 //                updateCust = scan.nextLine(); for later
                 System.out.println("");
+                
+                c.findCustomer(customerName);
+                
+                System.out.println("\nThe request is received, please choose your driver...");
 
                 System.out.println("Driver List (List Last Updated Time : NoTIme)");
                 System.out.println("(Current time : " + t.time() + " )");
@@ -133,8 +138,11 @@ public class Main {
 
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
-                chooseDriver = scan.nextLine();
-                System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
+                String driverName = scan.nextLine();
+                
+                d.update(driverName, , finLan, customerName);
+                c.pending(customerName);
+                System.out.println("\n" + driverName + " is on the way to pick you up.");
             }
         }
     }

@@ -43,6 +43,33 @@ public class Customer {
             }
         }
     }
+    
+    public boolean findCustomer(String name){
+        for (CustomerProfile customerProfile : customer) {
+            if(name.equalsIgnoreCase(customerProfile.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public double finLat(String name){
+        for (CustomerProfile customerProfile : customer) {
+            if(findCustomer(name)){
+                return customerProfile.getFiLan();
+            }
+        }
+        return 0.0;
+    }
+    
+    public double finLong(String name){
+        for (CustomerProfile customerProfile : customer) {
+            if(findCustomer(name)){
+                return customerProfile.getFiLong();
+            }
+        }
+        return 0.0;
+    }
 
     public void display() {
         System.out.println("==================================================================================================================================");
