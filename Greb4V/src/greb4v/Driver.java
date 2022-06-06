@@ -2,14 +2,14 @@ package greb4v;
 
 import java.util.ArrayList;
 
-public class Driver {
+public class Driver extends DriverProfile{
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
 
     public void add(DriverProfile e) {
         driver.add(e);
     }
-
+    
     public void remove(String name) {
         if (driver.size() == 0) {
             System.out.println("List is empty");
@@ -23,6 +23,25 @@ public class Driver {
                 i++;
             }
         }
+    }
+    
+    public void update(String name, String status, double fiLat, double fiLan, String customerName){ //updating location, customer, status
+        if (driver.size() == 0) {
+            System.out.println("List is empty");
+        } else {
+            for (DriverProfile driverProfile : driver) {
+                int i = 0;
+                if (driverProfile.getName().equalsIgnoreCase(name)) {
+                    driverProfile.setStatus("Not Available");
+                    driverProfile.setInitialLatitude(fiLat);
+                    driverProfile.setInitialLongitude(fiLan);
+                    driverProfile.setCustomer(customerName);
+                    break;
+                }
+                i++;
+            }
+        }
+        
     }
 
     public void display() {
