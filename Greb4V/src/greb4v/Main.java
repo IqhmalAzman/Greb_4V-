@@ -79,40 +79,45 @@ public class Main {
         custInput = scan.nextLine().toUpperCase();
 
         switch (custInput) {
-            case "A": {
-                System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
-                System.out.println("(Enter \"exit\" to go back to homepage):");
-                System.out.print("\n>> ");
-                String customerName = scan.next();
-                int EAT = scan.nextInt();
-                int cap = scan.nextInt();
-                String[] iniLatLan = scan.next().split(",");
-                double iniLat = Double.parseDouble(iniLatLan[0]);
-                double iniLan = Double.parseDouble(iniLatLan[1]);
-                String[] finLatLan = scan.next().split(",");
-                double finLat = Double.parseDouble(finLatLan[0]);
-                double finLan = Double.parseDouble(finLatLan[1]);
-                
-                c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan));
-                
-                scan.nextLine();
-                
+                case "A": {
+                    System.out.println("Enter the details of the customer you want to create (name, Expected arrival time, capacity, starting point, destination)");
+                    System.out.println("(Enter \"exit\" to go back to homepage):");
+                    System.out.print("\n>> ");
+
+                try{
+                    String customerName = scan.next();
+                if (!customerName.equalsIgnoreCase("exit")) {
+                    int EAT = scan.nextInt();
+                    int cap = scan.nextInt();
+                    String[] iniLatLan = scan.next().split(",");
+                    double iniLat = Double.parseDouble(iniLatLan[0]);
+                    double iniLan = Double.parseDouble(iniLatLan[1]);
+                    String[] finLatLan = scan.next().split(",");
+                    double finLat = Double.parseDouble(finLatLan[0]);
+                    double finLan = Double.parseDouble(finLatLan[1]);
+
+                    c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan));
+                    scan.nextLine();
+
 //                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
+                    System.out.println("\nThe request is received, please choose your driver...");
 
-                System.out.println("\nThe request is received, please choose your driver...");
+                    System.out.println("Requests List (List Last Updated Time : noTime");
+                    System.out.println("(Current time : " + t.time() + " )");
+                    d.displayRating(cap);
 
-                System.out.println("Requests List (List Last Updated Time : noTime");
-                System.out.println("(Current time : " + t.time() + " )");
-                d.displayRating(cap);
+                    System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
+                    System.out.print("\n>> ");
+                    String driverName = scan.nextLine();
 
-                System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
-                System.out.print("\n>> ");
-                String driverName = scan.nextLine();
-                
-                d.update(driverName, finLat, finLan, customerName);
-                c.pending(customerName);
-                
-                System.out.println("\n" + driverName + " is on the way to pick you up.");
+                    d.assignCustomer(driverName, customerName);
+                    c.pending(customerName);
+
+                    System.out.println("\n" + driverName + " is on the way to pick you up.");
+                }
+                } catch(Exception e){
+                    System.out.println("Error wrong input");
+                }
                 break;
             }
 

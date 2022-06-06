@@ -63,8 +63,8 @@ public class Driver{
         for (DriverProfile driverProfile : driver) {
             
             if(cap <= driverProfile.getCapacity())
-                System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
-                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), "customer", driverProfile.getRating());
+                System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer(), driverProfile.getRating());
         }
 
         System.out.println("=============================================================================================================================");
