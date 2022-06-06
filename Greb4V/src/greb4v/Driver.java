@@ -56,15 +56,17 @@ public class Driver{
         System.out.println("=========================================================================================================");
     }
     
-    public void displayRating() {
-        System.out.println("=========================================================================================================");
+    public void displayRating(int cap) {
+        System.out.println("=============================================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer", "Rating");
         for (DriverProfile driverProfile : driver) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
+            
+            if(cap <= driverProfile.getCapacity())
+                System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
                     driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), "customer", driverProfile.getRating());
         }
 
-        System.out.println("=========================================================================================================");
+        System.out.println("=============================================================================================================================");
     }
 }
