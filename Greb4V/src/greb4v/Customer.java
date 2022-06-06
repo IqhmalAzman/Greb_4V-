@@ -80,7 +80,10 @@ public class Customer {
         return -1;
     }
 
-    public void display() {
+    public void display(String time) {
+        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("(Current time : " + time  + " )");
+        
         System.out.println("==================================================================================================================================");
         System.out.printf("%-20s %-20s %-25s %-20s %-20s %-20s\n", "Customer", "Status", "Expected Arrival Time",
                 "Capacity", "Starting Point", "Destination");

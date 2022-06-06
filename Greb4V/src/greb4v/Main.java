@@ -55,13 +55,9 @@ public class Main {
         System.out.println("\nSystem Dashboard : \n");
         System.out.println("(Current time : " + t.time() + " )");
 
-        System.out.println("Requests List (List Last Updated Time : noTime");
-        System.out.println("(Current time : " + t.time() + " )");
-        c.display();
+        c.display(t.time());
 
-        System.out.println("\nRequests List (List Last Updated Time : noTime");
-        System.out.println("(Current time : " + t.time() + " )");
-        d.display();
+        d.display(t.time());
 
     }
 
@@ -99,12 +95,10 @@ public class Main {
                         c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan));
                         scan.nextLine();
 
-//                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
+        //                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
 
-                        System.out.println("Requests List (List Last Updated Time : noTime");
-                        System.out.println("(Current time : " + t.time() + " )");
-                        d.displayRating(cap);
+                        d.displayRating(c.getCap(customerName), t.time());
 
                         System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                         System.out.print("\n>> ");
@@ -123,9 +117,8 @@ public class Main {
 
             case "B": {
                 //update customer requests - for customers who have given details but exit to homepage
-                System.out.println("Driver List (List Last Updated Time : NoTIme)");
-                System.out.println("(Current time : " + t.time() + " )");
-                c.display();
+           
+                c.display(t.time());
 
                 System.out.println("\nEnter the customer name you want to update (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
@@ -136,19 +129,21 @@ public class Main {
                 if (c.findCustomer(customerName)) {
                     System.out.println("\nThe request is received, please choose your driver...");
 
-                        System.out.println("Requests List (List Last Updated Time : noTime");
-                        System.out.println("(Current time : " + t.time() + " )");
-                        d.displayRating(c.getCap(customerName));
+                    d.displayRating(c.getCap(customerName), t.time());
 
-                        System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
-                        System.out.print("\n>> ");
-                        String driverName = scan.nextLine();
+                    System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
+                    System.out.print("\n>> ");
+                    String driverName = scan.nextLine();
 
-                        d.assignCustomer(driverName, customerName);
-                        c.pending(customerName);
+                    d.assignCustomer(driverName, customerName);
+                    c.pending(customerName);
 
-                        System.out.println("\n" + driverName + " is on the way to pick you up.");
+                    System.out.println("\n" + driverName + " is on the way to pick you up.");
+                } else{
+                    System.out.println("Cannot find Customer");
                 }
+                
+                break;
             }
         }
     }
@@ -171,35 +166,43 @@ public class Main {
 
             switch (input) {
                 case "A": {
-
                     System.out.println("Enter the details of the driver you want to create (name, capacity, "
                             + " location): ");
+                    System.out.println("(Enter \"exit\" to go back to homepage):");
+                    System.out.print("\n>> ");
+                    
+                    try{
+                        String driverName = scan.next();
+                        
+                        if(!driverName.equalsIgnoreCase("exit")){
+                            int cap = scan.nextInt();
+                            String[] iniLatLan = scan.next().split(",");
+                            double iniLat = Double.parseDouble(iniLatLan[0]);
+                            double iniLan = Double.parseDouble(iniLatLan[1]);
 
-                    String driverName = scan.next();
-                    int cap = scan.nextInt();
-                    String[] iniLatLan = scan.next().split(",");
-                    double iniLat = Double.parseDouble(iniLatLan[0]);
-                    double iniLan = Double.parseDouble(iniLatLan[1]);
+                            // this is hard coded need input later
+                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan));
 
-                    // this is hard coded need input later
-                    d.add(new DriverProfile(driverName, cap, iniLat, iniLan));
+                            d.display(t.time());
+                        }
+                        
+                        
+                    } catch(Exception e){
+                        System.out.println("Error wrong input");
+                    }
 
-                    System.out.println("Driver List (List Last Updated Time : NoTIme)");
-                    System.out.println("(Current time : " + t.time() + " )");
-                    d.display();
+                    
+
+
                     break;
                 }
                 case "B": {
                     scan = new Scanner(System.in);
 
-                    System.out.println("Driver List (List Last Updated Time : NoTIme)");
-                    System.out.println("(Current time : " + t.time() + " )");
-                    d.display();
+                    d.display(t.time());
                     d.remove(scan.nextLine());
 
-                    System.out.println("Driver List (List Last Updated Time : NoTIme)");
-                    System.out.println("(Current time : " + t.time() + " )");
-                    d.display();
+                    d.display(t.time());
                     break;
                 }
                 case "EXIT": {

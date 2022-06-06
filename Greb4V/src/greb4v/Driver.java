@@ -48,7 +48,10 @@ public class Driver{
         
     }
 
-    public void display() {
+    public void display(String time) {
+        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("(Current time : " + time + " )");
+        
         System.out.println("=========================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
@@ -60,7 +63,10 @@ public class Driver{
         System.out.println("=========================================================================================================");
     }
     
-    public void displayRating(int cap) {
+    public void displayRating(int cap, String time) {
+        System.out.println("Requests List (List Last Updated Time : noTime");
+        System.out.println("(Current time : " + time + " )");
+        
         System.out.println("=============================================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer", "Rating");
