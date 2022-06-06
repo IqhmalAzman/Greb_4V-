@@ -29,4 +29,14 @@ public class CustomerProfile extends Profile {
     public String getStatus() {
         return status;
     }
+
+    public void setEAT(int EAT) {
+        this.EAT = EAT;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 }

@@ -107,13 +107,12 @@ public class Main {
 
                 System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
-                chooseDriver = scan.nextLine();
-//                d.update(,
+                String driverName = scan.nextLine();
                 
+                d.update(driverName, finLat, finLan, customerName);
+                c.pending(customerName);
                 
-                
-                
-                System.out.println("\n" + chooseDriver + " is on the way to pick you up.");
+                System.out.println("\n" + driverName + " is on the way to pick you up.");
                 break;
             }
 

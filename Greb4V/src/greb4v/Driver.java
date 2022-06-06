@@ -25,7 +25,7 @@ public class Driver{
         }
     }
     
-    public void update(String name, String status, double fiLat, double fiLan, String customerName){ //updating location, customer, status
+    public void update(String name, double fiLat, double fiLan, String customerName){ //updating location, customer, status
         if (driver.size() == 0) {
             System.out.println("List is empty");
         } else {
@@ -49,8 +49,8 @@ public class Driver{
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), "Status",
-                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), "customer");
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer());
         }
 
         System.out.println("=========================================================================================================");
