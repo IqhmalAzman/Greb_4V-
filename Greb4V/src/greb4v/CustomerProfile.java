@@ -3,10 +3,11 @@ package greb4v;
 public class CustomerProfile extends Profile {
 
     private double fiLan, fiLong;
-    private int EAT;
+    private String EAT;
     private String status;
+    private int driverToCustomerTime;
 
-    public CustomerProfile(String name, int EAT, int cap, double iniLan, double iniLong, double fiLan, double fiLong) {
+    public CustomerProfile(String name, String EAT, int cap, double iniLan, double iniLong, double fiLan, double fiLong) {
         super(name, cap, iniLan, iniLong);
         this.fiLan = fiLan;
         this.fiLong = fiLong;
@@ -22,7 +23,7 @@ public class CustomerProfile extends Profile {
         return fiLong;
     }
 
-    public int getEAT() {
+    public String getEAT() {
         return EAT;
     }
 
@@ -30,7 +31,7 @@ public class CustomerProfile extends Profile {
         return status;
     }
 
-    public void setEAT(int EAT) {
+    public void setEAT(String EAT) {
         this.EAT = EAT;
     }
 

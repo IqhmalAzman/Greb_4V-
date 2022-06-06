@@ -82,7 +82,7 @@ public class Main {
                 try {
                     String customerName = scan.next();
                     if (!customerName.equalsIgnoreCase("exit")) {
-                        int EAT = scan.nextInt();
+                        String EAT = scan.next();
                         int cap = scan.nextInt();
                         String[] iniLatLan = scan.next().split(",");
                         double iniLat = Double.parseDouble(iniLatLan[0]);
@@ -95,7 +95,8 @@ public class Main {
                                 t.time());
                         scan.nextLine();
 
-                        c.disTime(customerName);
+                        System.out.println(t.time());
+                        c.customerToDestination(customerName, t.time());
                         
                         
         //                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
@@ -187,6 +188,7 @@ public class Main {
                             // this is hard coded need input later
                             d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
 
+                            
                             d.display(t.time());
                         }
                         
@@ -194,10 +196,6 @@ public class Main {
                     } catch(Exception e){
                         System.out.println("Error wrong input");
                     }
-
-                    
-
-
                     break;
                 }
                 case "B": {

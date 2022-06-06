@@ -102,20 +102,21 @@ public class Customer {
         return arr;
     }
     
-    public void disTime(String name){
-           
-//        Distance dist = new Distance();
+    public void driverToCustomer(String customerName, String driverName,String driverCoordinate, String currentTime){
+    }
+    
+    public void customerToDestination(String name, String currentTime){
         Calculation calc = new Calculation();
         
         double[] arr = coordinate(name);
-        
         double dis = calc.distance(arr[0],arr[1], arr[2],arr[3]);
 
-        calc.Calculation(dis);
-
-//        calc.customerDestinationTime("1300");
+        calc.calculation(dis);
         
-        System.out.println(calc.customerDestinationTime("1300"));
+        for (CustomerProfile customerProfile : customer) {
+            customerProfile.setEAT(calc.customerDestinationTime(currentTime));
+        }
+        
     }
 
     public void display(String time) {
