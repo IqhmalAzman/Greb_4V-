@@ -59,6 +59,15 @@ public class Driver {
 
     }
 
+    public void rating(String driverName,double rating){
+        for (DriverProfile driverProfile : driver) {
+            if (findDriver(driverName)) {
+                driverProfile.setRating(rating);
+                break;      
+            }
+        }
+    }
+    
     public void display(String time) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
