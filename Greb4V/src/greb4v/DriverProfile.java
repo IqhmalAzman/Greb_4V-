@@ -5,22 +5,23 @@ public class DriverProfile extends Profile {
     private String status, customer;
     private double rating;
     private int ratingCount;
+    double total = 5.00;
 
     public DriverProfile(String name, int cap, double iniLan, double iniLong) {
         super(name, cap, iniLan, iniLong);
         status = "available";
         rating = 5.00;
-        ratingCount++;
+        ratingCount = 1;
     }
 
     public double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating += rating;
-        this.rating = this.rating / ratingCount;
-        this.rating = round(this.rating, 1);
+    public void setRating(double rate) {
+        ratingCount++;
+        total = total + rate;
+        rating = round((total/ratingCount), 1); 
     }
 
     public String getStatus() {
