@@ -7,13 +7,12 @@ package greb4v;
 import java.util.ArrayList;
 
 public class Customer {
-
     ArrayList<CustomerProfile> customer = new ArrayList<CustomerProfile>();
     String lastUpdatedTime;
     
     //experimentation
     ArrayList<DriverProfile> driver; 
-    ArrayList<Integer> driverToCustomerTime = new ArrayList<>();
+    ArrayList<String> allPossibleEAT;
     
     //until here
 
@@ -29,6 +28,7 @@ public class Customer {
                     customerProfile.setDriver(driver);
                     customerProfile.customerToDestination();
                     customerProfile.driverToCustomer();
+                    this.allPossibleEAT = customerProfile.setAllPossibleEAT();
                 }
             }
         }
@@ -110,27 +110,6 @@ public class Customer {
         return -1;
     }
 
-//    public void customerToDestination(String name, String currentTime) {
-//        Calculation calc = new Calculation();
-//
-//        double dis = 0.0;
-//        
-//        for (CustomerProfile customerProfile : customer) {
-//            if(findCustomer(name)){
-//                dis = calc.distance(customerProfile.getInitialLatitude(), 
-//                        customerProfile.getInitialLongitude(), customerProfile.getFiLan(), customerProfile.getFiLong());
-//                break;
-//            }
-//        }
-//
-////        calc.calculation(dis);
-//        System.out.println(calc.calculation2(dis));
-//
-//        for (CustomerProfile customerProfile : customer) {
-//            customerProfile.setEAT(calc.customerDestinationTime(currentTime));
-//        }
-//    }
-
     public void display(String time) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
@@ -140,7 +119,7 @@ public class Customer {
                 "Capacity", "Starting Point", "Destination");
         for (CustomerProfile customerProfile : customer) {
             System.out.printf("%-20s %-20s %-25s %-20s %-20s %-20s\n", customerProfile.getName(), customerProfile.getStatus(),
-                    customerProfile.getEAT(), customerProfile.getCapacity(), customerProfile.getInitialLatitude() + ","
+                    customerProfile.getChosenEAT(), customerProfile.getCapacity(), customerProfile.getInitialLatitude() + ","
                     + customerProfile.getInitialLongitude(), customerProfile.getFiLan() + "," + customerProfile.getFiLong());
         }
 
@@ -152,16 +131,13 @@ public class Customer {
         System.out.println("(Current time : " + time + " )");
 
         System.out.println("=============================================================================================================================");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
-                "Capacity", "Location", "Customer", "Rating");
+        System.out.printf("%-20s %-20s %-20s %-20s\n", "Driver", "Capacity",
+                "EAT", "Reputation");
         
-        
-        
-        
-        for (DriverProfile driverProfile : driver) {
-            if (cap <= driverProfile.getCapacity()) {
-                System.out.printf("%-20s %-20s %-20s %-20s\n", driverProfile.getName(),
-                        driverProfile.getCapacity(),0000 , driverProfile.getRating());
+        for (int i = 0; i < driver.size(); i++) {
+            if(cap <= driver.get(i).getCapacity()){
+                System.out.printf("%-20s %-20s %-20s %-20s\n",driver.get(i).getName(), driver.get(i).getCapacity(),
+                        allPossibleEAT.get(i), driver.get(i).getRating());
             }
         }
 

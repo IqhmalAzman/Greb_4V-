@@ -41,15 +41,12 @@ public class Calculation {
     private double rad2deg(double rad) {
         return (rad * 180.0 / Math.PI);
     }
-
-    public String integerToStringEAT(String time) {
-//        int totalMin = this.min;
-        int totalMin = this.calculation2(min);
+    
+    public String integerToStringTimeTaken(int time){
+        int totalMin = time;
         
-        String displayHH = time.substring(0, 2);
-        String displayMM = time.substring(2, 4);
-
-        totalMin += Integer.parseInt(displayHH) * 60 + Integer.parseInt(displayMM);
+        String displayHH;
+        String displayMM;
 
         int hh = totalMin / 60 % 24;
         int mm = totalMin % 60;
@@ -67,5 +64,33 @@ public class Calculation {
 
         return displayHH + displayMM;
     }
+    
+
+    // this is for the current time + EAT
+//    public String currentTimeEAT(String time) {
+////        int totalMin = this.min;
+//        int totalMin = this.calculation2(min);
+//        
+//        String displayHH = time.substring(0, 2);
+//        String displayMM = time.substring(2, 4);
+//
+//        totalMin += Integer.parseInt(displayHH) * 60 + Integer.parseInt(displayMM);
+//
+//        int hh = totalMin / 60 % 24;
+//        int mm = totalMin % 60;
+//
+//        displayHH = String.valueOf(hh);
+//        displayMM = String.valueOf(mm);
+//
+//        if (hh < 10) {
+//            displayHH = "0" + displayHH;
+//        }
+//
+//        if (mm < 10) {
+//            displayMM = "0" + displayMM;
+//        }
+//
+//        return displayHH + displayMM;
+//    }
 
 }
