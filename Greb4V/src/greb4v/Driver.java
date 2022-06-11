@@ -7,9 +7,12 @@ public class Driver {
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
     String lastUpdatedTime;
     
+    //experimental
     public ArrayList<DriverProfile> referDriver(){
         return driver;
     }
+    //until here
+    
 
     public void add(DriverProfile e, String lastUpdateTime) {
         this.lastUpdatedTime = lastUpdateTime;
@@ -77,27 +80,28 @@ public class Driver {
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
             System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
-                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer());
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), 
+                    driverProfile.getCustomer());
         }
 
         System.out.println("=========================================================================================================");
     }
 
-    public void displayRating(int cap, String time) {
-        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
-        System.out.println("(Current time : " + time + " )");
-
-        System.out.println("=============================================================================================================================");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
-                "Capacity", "Location", "Customer", "Rating");
-        for (DriverProfile driverProfile : driver) {
-
-            if (cap <= driverProfile.getCapacity()) {
-                System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
-                        driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), driverProfile.getCustomer(), driverProfile.getRating());
-            }
-        }
-
-        System.out.println("=============================================================================================================================");
-    }
+//    public void displayRating(int cap, String time) {
+//        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
+//        System.out.println("(Current time : " + time + " )");
+//
+//        System.out.println("=============================================================================================================================");
+//        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
+//                "Capacity", "Location", "Customer", "Rating");
+//        for (DriverProfile driverProfile : driver) {
+//
+//            if (cap <= driverProfile.getCapacity()) {
+//                System.out.printf("%-20s %-20s %-20s %-20s\n", driverProfile.getName(),
+//                        driverProfile.getCapacity(), 0000, driverProfile.getRating());
+//            }
+//        }
+//
+//        System.out.println("=============================================================================================================================");
+//    }
 }

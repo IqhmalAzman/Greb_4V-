@@ -82,6 +82,8 @@ public class Main {
                 try {
                     String customerName = scan.next();
                     if (!customerName.equalsIgnoreCase("exit")) {
+                        // this is the soft code/input
+
 //                        String EAT = scan.next();
 //                        int cap = scan.nextInt();
 //                        String[] iniLatLan = scan.next().split(",");
@@ -90,30 +92,23 @@ public class Main {
 //                        String[] finLatLan = scan.next().split(",");
 //                        double finLat = Double.parseDouble(finLatLan[0]);
 //                        double finLan = Double.parseDouble(finLatLan[1]);
-
 //                        c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan),
 //                                t.time());
-                        
-                         c.add(new CustomerProfile(customerName, "0000", 4, 3.1209,101.6538, 3.1174,101.6781),
-                                t.time());
 
+                        c.add(new CustomerProfile(customerName, "0000", 4, 3.1209,101.6538, 3.1174,101.6781),
+                                t.time());
                         scan.nextLine();
-                        
-                     
 
                         System.out.println(t.time());
-                        c.customerToDestination(customerName, t.time());
+//                        c.customerToDestination(customerName, t.time());
 
                         // experimental
                         c.setDriverProfile(customerName, d.referDriver());
-                        c.driverToCustomer(customerName);
-
                         //until here
-                        //                c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
+                        //c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
 
-                        d.displayRating(c.getCap(customerName), t.time());
-
+                        c.displayRatingDriver(c.getCap(customerName), t.time());
                         System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
@@ -125,7 +120,7 @@ public class Main {
 
                     }
                 } catch (Exception e) {
-                    System.out.println("Error wrong input");
+                    System.out.println(e);
                 }
                 break;
             }
@@ -144,7 +139,7 @@ public class Main {
                 if (c.findCustomer(customerName)) {
                     System.out.println("\nThe request is received, please choose your driver...");
 
-                    d.displayRating(c.getCap(customerName), t.time());
+                    c.displayRatingDriver(c.getCap(customerName), t.time());
 
                     System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                     System.out.print("\n>> ");
@@ -186,9 +181,11 @@ public class Main {
                     System.out.println("(Enter \"exit\" to go back to homepage):");
                     System.out.print("\n>> ");
 
-                    d.add(new DriverProfile("John", 5, 23.44, 101.23), t.time());
+                    d.add(new DriverProfile("John", 5, 3.1174,101.6781), t.time());
 
                     d.display(t.time());
+
+                    // this is the soft code/input
 //                    try{
 //                        String driverName = scan.next();
 //                        
@@ -199,7 +196,7 @@ public class Main {
 //                            double iniLan = Double.parseDouble(iniLatLan[1]);
 //
 //                        
-////                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
+//                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
 //                            
 //                        }
 //                    } catch(Exception e){

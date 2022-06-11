@@ -57,22 +57,22 @@ public class Test {
 //        
 //        System.out.println(hh+mm);
 //        
-        Calculation calc = new Calculation();
-//        Time t = new Time();
-        
-        double dist = calc.distance(3.1209,101.6538, 3.1174,101.6781);
-        calc.calculation(dist);
-
-        String time = calc.customerDestinationTime("1300");
-        
-        System.out.println(time);
-        
-        //check whether customer has reached destination
-        //if yes
-        System.out.println("Rate your driver:");
-        System.out.print("\n>> ");
-        double rating = scan.nextDouble();
-        d.rating(driverName, rating); //driverName is inputted earlier when customer chose the driver
+//        Calculation calc = new Calculation();
+////        Time t = new Time();
+//        
+//        double dist = calc.distance(3.1209,101.6538, 3.1174,101.6781);
+//        calc.calculation(dist);
+//
+//        String time = calc.customerDestinationTime("1300");
+//        
+//        System.out.println(time);
+//        
+//        //check whether customer has reached destination
+//        //if yes
+//        System.out.println("Rate your driver:");
+//        System.out.print("\n>> ");
+//        double rating = scan.nextDouble();
+//        d.rating(driverName, rating); //driverName is inputted earlier when customer chose the driver
     }
 
 }

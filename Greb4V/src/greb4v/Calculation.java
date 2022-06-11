@@ -42,7 +42,7 @@ public class Calculation {
         return (rad * 180.0 / Math.PI);
     }
 
-    public String customerDestinationTime(String time) {
+    public String integerToStringEAT(String time) {
 //        int totalMin = this.min;
         int totalMin = this.calculation2(min);
         
