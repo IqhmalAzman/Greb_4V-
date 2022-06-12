@@ -109,6 +109,21 @@ public class Customer {
         }
         return -1;
     }
+    
+    public void asssignDriverTImeToEAT(String customerName, String driverName){
+        for (CustomerProfile customerProfile : customer) {
+            if (findCustomer(customerName)) {
+                for(int i = 0; i < driver.size(); i++){
+                    if((driver.get(i).getName()).equalsIgnoreCase(driverName)){
+                        customerProfile.setChosenEAT(allPossibleEAT.get(i));
+                    }
+                    break;
+                }
+            }
+        }
+
+ 
+    }
 
     public void display(String time) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");

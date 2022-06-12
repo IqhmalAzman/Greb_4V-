@@ -57,10 +57,18 @@ public class Main {
         c.display(t.time());
 
         d.display(t.time());
+        
+        
 
     }
 
     public static void manageCustomer() {
+        
+        for (int i = 0; i < c.customer.size(); i++) {
+            
+            
+        }
+        
         System.out.println("\nYou are in customer view now (Enter \"exit\" to go back to homepage):");
         System.out.println("Options :");
         System.out.println("A - Create customer requests");
@@ -115,6 +123,7 @@ public class Main {
                         if (d.findDriver(driverName)) {
                             d.assignCustomer(driverName, customerName, t.time());
                             c.status(customerName, t.time(), "Waiting");
+                            c.asssignDriverTImeToEAT(customerName, driverName);
 
                             System.out.println("\n" + driverName + " is on the way to pick you up.");
                         } else {
@@ -188,27 +197,29 @@ public class Main {
                     System.out.println("(Enter \"exit\" to go back to homepage):");
                     System.out.print("\n>> ");
 
-                    d.add(new DriverProfile("John", 5, 3.1174, 101.6781), t.time());
+                    //this is the hard coded
+//                    d.add(new DriverProfile("John", 5, 3.1174, 101.6781), t.time());
 
-                    d.display(t.time());
+//                    d.display(t.time());
 
                     // this is the soft code/input
-//                    try{
-//                        String driverName = scan.next();
-//                        
-//                        if(!driverName.equalsIgnoreCase("exit")){
-//                            int cap = scan.nextInt();
-//                            String[] iniLatLan = scan.next().split(",");
-//                            double iniLat = Double.parseDouble(iniLatLan[0]);
-//                            double iniLan = Double.parseDouble(iniLatLan[1]);
-//
-//                        
-//                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
-//                            
-//                        }
-//                    } catch(Exception e){
-//                        System.out.println("Error wrong input");
-//                    }
+                    try{
+                        String driverName = scan.next();
+                        
+                        if(!driverName.equalsIgnoreCase("exit")){
+                            int cap = scan.nextInt();
+                            String[] iniLatLan = scan.next().split(",");
+                            double iniLat = Double.parseDouble(iniLatLan[0]);
+                            double iniLan = Double.parseDouble(iniLatLan[1]);
+
+                        
+                            d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
+                            
+                            d.display(t.time());
+                        }
+                    } catch(Exception e){
+                        System.out.println("Error wrong input");
+                    }
                     break;
                 }
                 case "B": {

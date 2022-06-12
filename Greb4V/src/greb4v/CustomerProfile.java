@@ -89,4 +89,6 @@ public class CustomerProfile extends Profile {
         
         return this.allPossibleEAT;
     }
+    
+   
 }
