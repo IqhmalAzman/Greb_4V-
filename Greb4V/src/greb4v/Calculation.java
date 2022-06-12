@@ -69,7 +69,7 @@ public class Calculation {
     // this is for the current time + EAT
     public String currentTimeEAT(int time, String currentTime) {
 //        int totalMin = this.min;
-        int totalMin = this.calculation2(min);
+        int totalMin = time;
         
         String displayHH = currentTime.substring(0, 2);
         String displayMM = currentTime.substring(2, 4);

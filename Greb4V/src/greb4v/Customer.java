@@ -40,7 +40,7 @@ public class Customer {
         customer.add(e);
     }
 
-    public void pending(String name, String lastUpdatedTime) {
+    public void status(String name, String lastUpdatedTime, String status) {
         if (customer.size() == 0) {
             System.out.println("List is empty");
         } else {
@@ -49,7 +49,7 @@ public class Customer {
             for (CustomerProfile customerProfile : customer) {
                 int i = 0;
                 if (customerProfile.getName().equalsIgnoreCase(name)) {
-                    customerProfile.setStatus("Pending");
+                    customerProfile.setStatus(status);
                     break;
                 }
                 i++;
@@ -135,7 +135,7 @@ public class Customer {
                 "EAT", "Reputation");
         
         for (int i = 0; i < driver.size(); i++) {
-            if(cap <= driver.get(i).getCapacity()){
+            if(cap <= driver.get(i).getCapacity() && driver.get(i).getStatus().equalsIgnoreCase("Available")){
                 System.out.printf("%-20s %-20s %-20s %-20s\n",driver.get(i).getName(), driver.get(i).getCapacity(),
                         allPossibleEAT.get(i), driver.get(i).getRating());
             }

@@ -94,18 +94,15 @@ public class Main {
 //                        double finLan = Double.parseDouble(finLatLan[1]);
 //                        c.add(new CustomerProfile(customerName, EAT, cap, iniLat, iniLan, finLat, finLan),
 //                                t.time());
-
-                        c.add(new CustomerProfile(customerName, "0000", 4, 3.1209,101.6538, 3.1174,101.6781),
+                        c.add(new CustomerProfile(customerName, "0000", 4, 3.1209, 101.6538, 3.1174, 101.6781),
                                 t.time());
                         scan.nextLine();
 
 //                        System.out.println(t.time());
 //                        c.customerToDestination(customerName, t.time());
-
                         // experimental
                         c.setDriverProfile(customerName, d.referDriver(), t.time());
-                        
-                        
+
                         //until here
                         //c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
@@ -115,11 +112,14 @@ public class Main {
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
 
-                        d.assignCustomer(driverName, customerName, t.time());
-                        c.pending(customerName, t.time());
+                        if (d.findDriver(driverName)) {
+                            d.assignCustomer(driverName, customerName, t.time());
+                            c.status(customerName, t.time(), "Waiting");
 
-                        System.out.println("\n" + driverName + " is on the way to pick you up.");
-
+                            System.out.println("\n" + driverName + " is on the way to pick you up.");
+                        } else {
+                            System.out.println("Driver died");
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println(e);
@@ -147,10 +147,15 @@ public class Main {
                     System.out.print("\n>> ");
                     String driverName = scan.nextLine();
 
-                    d.assignCustomer(driverName, customerName, t.time());
-                    c.pending(customerName, t.time());
+                    if (d.findDriver(driverName)) {
+                        d.assignCustomer(driverName, customerName, t.time());
+                        c.status(customerName, t.time(), "Waiting");
 
-                    System.out.println("\n" + driverName + " is on the way to pick you up.");
+                        System.out.println("\n" + driverName + " is on the way to pick you up.");
+                    } else{
+                        System.out.println("Driver Died");
+                    }
+
                 } else {
                     System.out.println("Cannot find Customer");
                 }
@@ -183,7 +188,7 @@ public class Main {
                     System.out.println("(Enter \"exit\" to go back to homepage):");
                     System.out.print("\n>> ");
 
-                    d.add(new DriverProfile("John", 5, 3.1174,101.6781), t.time());
+                    d.add(new DriverProfile("John", 5, 3.1174, 101.6781), t.time());
 
                     d.display(t.time());
 
