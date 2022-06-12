@@ -16,7 +16,7 @@ public class Customer {
     
     //until here
 
-    public void setDriverProfile(String name, ArrayList<DriverProfile> driver) {
+    public void setDriverProfile(String name, ArrayList<DriverProfile> driver, String currentTime) {
         if (customer.size() == 0) {
             System.out.println("List is empty");
         } else {
@@ -28,7 +28,7 @@ public class Customer {
                     customerProfile.setDriver(driver);
                     customerProfile.customerToDestination();
                     customerProfile.driverToCustomer();
-                    this.allPossibleEAT = customerProfile.setAllPossibleEAT();
+                    this.allPossibleEAT = customerProfile.setAllPossibleEAT(currentTime);
                 }
             }
         }

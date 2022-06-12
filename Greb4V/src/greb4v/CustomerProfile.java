@@ -59,7 +59,7 @@ public class CustomerProfile extends Profile {
                 getInitialLongitude(), getFiLan(), getFiLong());
 
         this.customerToDestinationTime = calc.calculation2(dis);
-        System.out.println("Customer to Dest: " + calc.calculation2(dis));
+//        System.out.println("Customer to Dest: " + calc.calculation2(dis));
     }
 
     public void driverToCustomer() {
@@ -70,22 +70,22 @@ public class CustomerProfile extends Profile {
             driverToCustomerTime.add(time);
         }
 
-        for (int i = 0; i < driverName.size(); i++) {
-            System.out.println("\n All Driver to Customer: ");
-            System.out.println(driverName.get(i) + " : " + driverToCustomerTime.get(i));
-        }
+//        for (int i = 0; i < driverName.size(); i++) {
+//            System.out.println("\n All Driver to Customer: ");
+//            System.out.println(driverName.get(i) + " : " + driverToCustomerTime.get(i));
+//        }
     }
     
-    public ArrayList<String> setAllPossibleEAT(){
+    public ArrayList<String> setAllPossibleEAT(String currentTime){
         for (int i = 0; i < driverToCustomerTime.size(); i++) {
-            allPossibleEAT.add(calc.integerToStringTimeTaken(this.customerToDestinationTime +  this.driverToCustomerTime.get(i)));
+            allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime +  this.driverToCustomerTime.get(i)), currentTime));
         }
         
-        System.out.println("\n All Possible EAT: ");
+//        System.out.println("\n All Possible EAT: ");
         
-        for (String string : allPossibleEAT) {
-            System.out.println(string);
-        }
+//        for (String string : allPossibleEAT) {
+//            System.out.println(string);
+//        }
         
         return this.allPossibleEAT;
     }

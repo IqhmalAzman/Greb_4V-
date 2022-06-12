@@ -99,11 +99,13 @@ public class Main {
                                 t.time());
                         scan.nextLine();
 
-                        System.out.println(t.time());
+//                        System.out.println(t.time());
 //                        c.customerToDestination(customerName, t.time());
 
                         // experimental
-                        c.setDriverProfile(customerName, d.referDriver());
+                        c.setDriverProfile(customerName, d.referDriver(), t.time());
+                        
+                        
                         //until here
                         //c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
