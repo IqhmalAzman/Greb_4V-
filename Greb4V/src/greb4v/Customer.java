@@ -16,14 +16,14 @@ public class Customer {
     
     //until here
 
-    public void setDriverProfile(String name, ArrayList<DriverProfile> driver, String currentTime) {
+    public void setDriverProfile(String customerName, ArrayList<DriverProfile> driver, String currentTime) {
         if (customer.size() == 0) {
             System.out.println("List is empty");
         } else {
             this.lastUpdatedTime = lastUpdatedTime;
 
             for (CustomerProfile customerProfile : customer) {
-                if (findCustomer(name)) {
+                if (customerProfile.getName().equals(customerName)) {
                     this.driver = driver;
                     customerProfile.setDriver(driver);
                     customerProfile.customerToDestination();
@@ -77,6 +77,7 @@ public class Customer {
     public boolean findCustomer(String name) {
         for (CustomerProfile customerProfile : customer) {
             if (name.equalsIgnoreCase(customerProfile.getName())) {
+                System.out.println("findCustomer" + customerProfile.getName());
                 return true;
             }
         }
@@ -112,7 +113,9 @@ public class Customer {
     
     public void asssignDriverTImeToEAT(String customerName, String driverName){
         for (CustomerProfile customerProfile : customer) {
-            if (findCustomer(customerName)) {
+            if (customerName.equals(customerProfile.getName()) ) {
+                System.out.println("assignDriver customerName: " + customerName);
+                System.out.println("assignDriver customerProfile.getName(): " + customerProfile.getName());
                 for(int i = 0; i < driver.size(); i++){
                     if((driver.get(i).getName()).equalsIgnoreCase(driverName)){
                         customerProfile.setChosenEAT(allPossibleEAT.get(i));

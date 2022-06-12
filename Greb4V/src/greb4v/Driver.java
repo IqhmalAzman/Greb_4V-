@@ -52,9 +52,10 @@ public class Driver {
             this.lastUpdatedTime = lastUpdatedTime;
 
             for (DriverProfile driverProfile : driver) {
-                if (findDriver(driverName)) {
+                if (driverProfile.getName().equals(driverName)) {
                     driverProfile.setStatus("Not Available");
                     driverProfile.setCustomer(customerName);
+                    System.out.println(" assignCustomer" + customerName + " " +driverProfile.getCustomer());
                     break;
                 }
             }

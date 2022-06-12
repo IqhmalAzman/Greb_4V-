@@ -121,6 +121,8 @@ public class Main {
                         String driverName = scan.nextLine();
 
                         if (d.findDriver(driverName)) {
+                            System.out.println(driverName);
+                            System.out.println(customerName);
                             d.assignCustomer(driverName, customerName, t.time());
                             c.status(customerName, t.time(), "Waiting");
                             c.asssignDriverTImeToEAT(customerName, driverName);
