@@ -64,10 +64,10 @@ public class Main {
 
     public static void manageCustomer() {
         
-        for (int i = 0; i < c.customer.size(); i++) {
-            
-            
-        }
+//        for (int i = 0; i < c.customer.size(); i++) {
+//            
+//            
+//        }
         
         System.out.println("\nYou are in customer view now (Enter \"exit\" to go back to homepage):");
         System.out.println("Options :");
@@ -115,12 +115,13 @@ public class Main {
                         //c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
 
-                        c.displayRatingDriver(c.getCap(customerName), t.time());
+//                        c.displayRatingDriver(c.getCap(customerName), t.time());
+                        c.displayRatingDriver( 1, t.time(), customerName);
                         System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
 
-                        if (d.findDriver(driverName)) {
+                        if (d.findAvailableDriver(driverName)) {
                             System.out.println(driverName);
                             System.out.println(customerName);
                             d.assignCustomer(driverName, customerName, t.time());
@@ -152,7 +153,7 @@ public class Main {
                 if (c.findCustomer(customerName)) {
                     System.out.println("\nThe request is received, please choose your driver...");
 
-                    c.displayRatingDriver(c.getCap(customerName), t.time());
+                    c.displayRatingDriver(c.getCap(customerName), t.time(), customerName);
 
                     System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                     System.out.print("\n>> ");

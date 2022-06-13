@@ -12,7 +12,6 @@ public class Customer {
     
     //experimentation
     ArrayList<DriverProfile> driver; 
-    ArrayList<String> allPossibleEAT;
     
     //until here
 
@@ -28,7 +27,7 @@ public class Customer {
                     customerProfile.setDriver(driver);
                     customerProfile.customerToDestination();
                     customerProfile.driverToCustomer();
-                    this.allPossibleEAT = customerProfile.setAllPossibleEAT(currentTime);
+                    customerProfile.setAllPossibleEAT(currentTime);
                 }
             }
         }
@@ -118,9 +117,11 @@ public class Customer {
                 System.out.println("assignDriver customerProfile.getName(): " + customerProfile.getName());
                 for(int i = 0; i < driver.size(); i++){
                     if((driver.get(i).getName()).equalsIgnoreCase(driverName)){
-                        customerProfile.setChosenEAT(allPossibleEAT.get(i));
+                        System.out.println("test");
+                        System.out.println("Chosen EAT: " + customerProfile.getDriverEATBasedOnName(driverName));
+                        customerProfile.setChosenEAT(customerProfile.getDriverEATBasedOnName(driverName));
+                        break;
                     }
-                    break;
                 }
             }
         }
@@ -144,7 +145,16 @@ public class Customer {
         System.out.println("==================================================================================================================================");
     }
     
-    public void displayRatingDriver(int cap, String time) {
+    public int getCustomerPositionInArr(String customerName){
+        for (int i = 0; i < customer.size(); i++) {
+            if(customer.get(i).getName().equals(customerName)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public void displayRatingDriver(int cap, String time, String customerName) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
 
@@ -155,7 +165,7 @@ public class Customer {
         for (int i = 0; i < driver.size(); i++) {
             if(cap <= driver.get(i).getCapacity() && driver.get(i).getStatus().equalsIgnoreCase("Available")){
                 System.out.printf("%-20s %-20s %-20s %-20s\n",driver.get(i).getName(), driver.get(i).getCapacity(),
-                        allPossibleEAT.get(i), driver.get(i).getRating());
+                        customer.get(getCustomerPositionInArr(customerName)).getChosenEAT(), driver.get(i).getRating());
             }
         }
 

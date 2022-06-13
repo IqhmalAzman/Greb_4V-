@@ -6,13 +6,12 @@ public class Driver {
 
     ArrayList<DriverProfile> driver = new ArrayList<DriverProfile>();
     String lastUpdatedTime;
-    
+
     //experimental
-    public ArrayList<DriverProfile> referDriver(){
+    public ArrayList<DriverProfile> referDriver() {
         return driver;
     }
     //until here
-    
 
     public void add(DriverProfile e, String lastUpdateTime) {
         this.lastUpdatedTime = lastUpdateTime;
@@ -45,6 +44,15 @@ public class Driver {
         return false;
     }
 
+    public boolean findAvailableDriver(String name) {
+        for (DriverProfile driverProfile : driver) {
+            if (name.equalsIgnoreCase(driverProfile.getName()) && driverProfile.getStatus().equalsIgnoreCase("Available")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void assignCustomer(String driverName, String customerName, String lastUpdatedTime) { //updating location, customer, status
         if (driver.size() == 0) {
             System.out.println("List is empty");
@@ -55,7 +63,7 @@ public class Driver {
                 if (driverProfile.getName().equals(driverName)) {
                     driverProfile.setStatus("Not Available");
                     driverProfile.setCustomer(customerName);
-                    System.out.println(" assignCustomer" + customerName + " " +driverProfile.getCustomer());
+                    System.out.println(" assignCustomer" + customerName + " " + driverProfile.getCustomer());
                     break;
                 }
             }
@@ -63,15 +71,15 @@ public class Driver {
 
     }
 
-    public void rating(String driverName,double rating){
+    public void rating(String driverName, double rating) {
         for (DriverProfile driverProfile : driver) {
             if (findDriver(driverName)) {
                 driverProfile.setRating(rating);
-                break;      
+                break;
             }
         }
     }
-    
+
     public void display(String time) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
@@ -81,7 +89,7 @@ public class Driver {
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
             System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
-                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(), 
+                    driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(),
                     driverProfile.getCustomer());
         }
 

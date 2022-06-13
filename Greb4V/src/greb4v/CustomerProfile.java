@@ -51,7 +51,7 @@ public class CustomerProfile extends Profile {
     public void setDriver(ArrayList<DriverProfile> driver) {
         this.driver = driver;
     }
-    
+
     public void customerToDestination() { //to add time curre
         Calculation calc = new Calculation();
 
@@ -63,7 +63,7 @@ public class CustomerProfile extends Profile {
     }
 
     public void driverToCustomer() {
-        for (DriverProfile driverProfile : driver) {      
+        for (DriverProfile driverProfile : driver) {
             Integer time = calc.calculation2(calc.distance(driverProfile.getInitialLatitude(),
                     driverProfile.getInitialLongitude(), getInitialLatitude(), getInitialLongitude()));
             driverName.add(driverProfile.getName());
@@ -75,20 +75,33 @@ public class CustomerProfile extends Profile {
 //            System.out.println(driverName.get(i) + " : " + driverToCustomerTime.get(i));
 //        }
     }
-    
-    public ArrayList<String> setAllPossibleEAT(String currentTime){
-        for (int i = 0; i < driverToCustomerTime.size(); i++) {
-            allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime +  this.driverToCustomerTime.get(i)), currentTime));
-        }
-        
-//        System.out.println("\n All Possible EAT: ");
-        
-//        for (String string : allPossibleEAT) {
-//            System.out.println(string);
+
+//    public ArrayList<String> setAllPossibleEAT(String currentTime){
+//        for (int i = 0; i < driverToCustomerTime.size(); i++) {
+//            allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime +  this.driverToCustomerTime.get(i)), currentTime));
 //        }
-        
-        return this.allPossibleEAT;
+//        
+////        System.out.println("\n All Possible EAT: ");
+//        
+////        for (String string : allPossibleEAT) {
+////            System.out.println(string);
+////        }
+//        
+//        return this.allPossibleEAT;
+//    }
+    public void setAllPossibleEAT(String currentTime) {
+        for (int i = 0; i < driverToCustomerTime.size(); i++) {
+            allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime + this.driverToCustomerTime.get(i)), currentTime));
+        }
     }
     
-   
+    public String getDriverEATBasedOnName(String driverName){
+        for (int i = 0; i < driver.size(); i++) {
+            if(driver.get(i).getName().equals(driverName)){
+                return allPossibleEAT.get(i);
+            }
+        }
+        return "error";
+    }
+
 }
