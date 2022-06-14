@@ -79,6 +79,10 @@ public class Driver {
             }
         }
     }
+    
+    public ArrayList<DriverProfile> getDriverArr(){
+        return driver;
+    }
 
     public void display(String time) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");

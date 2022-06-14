@@ -125,8 +125,15 @@ public class Customer {
                 }
             }
         }
-
- 
+    }
+    
+    public String getPotentialEAT(String customerName, int index){
+        for (CustomerProfile customerProfile : customer) {
+            if(customerProfile.getName().equals(customerName)){
+                return customerProfile.getDriverEATBasedOnIndex(index);
+            }
+        }
+        return "0000";
     }
 
     public void display(String time) {
@@ -154,6 +161,10 @@ public class Customer {
         return -1;
     }
     
+    public ArrayList<CustomerProfile> getCustomerArr(){
+        return customer;
+    }
+    
     public void displayRatingDriver(int cap, String time, String customerName) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
@@ -162,10 +173,13 @@ public class Customer {
         System.out.printf("%-20s %-20s %-20s %-20s\n", "Driver", "Capacity",
                 "EAT", "Reputation");
         
+//        customer.get(getCustomerPositionInArr(customerName)).getDriverEATBasedOnName(driverName)
+        
         for (int i = 0; i < driver.size(); i++) {
             if(cap <= driver.get(i).getCapacity() && driver.get(i).getStatus().equalsIgnoreCase("Available")){
                 System.out.printf("%-20s %-20s %-20s %-20s\n",driver.get(i).getName(), driver.get(i).getCapacity(),
-                        customer.get(getCustomerPositionInArr(customerName)).getChosenEAT(), driver.get(i).getRating());
+                         getPotentialEAT(customerName, i), 
+                         driver.get(i).getRating());
             }
         }
 

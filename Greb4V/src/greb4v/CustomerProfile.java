@@ -94,14 +94,20 @@ public class CustomerProfile extends Profile {
             allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime + this.driverToCustomerTime.get(i)), currentTime));
         }
     }
-    
-    public String getDriverEATBasedOnName(String driverName){
+
+    public String getDriverEATBasedOnName(String driverName) {
         for (int i = 0; i < driver.size(); i++) {
-            if(driver.get(i).getName().equals(driverName)){
+            if (driver.get(i).getName().equals(driverName)) {
                 return allPossibleEAT.get(i);
             }
         }
         return "error";
+    }
+
+    public String getDriverEATBasedOnIndex(int index) {
+        System.out.println(allPossibleEAT.size());
+        
+        return allPossibleEAT.get(index);
     }
 
 }

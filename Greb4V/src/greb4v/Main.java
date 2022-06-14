@@ -1,5 +1,6 @@
 package greb4v;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -31,15 +32,20 @@ public class Main {
             // add call class for admin, customer, add/remove
             switch (input) {
                 case "A": {
-                    manageAdmin();
+                    checkStatus(t.time());
+                    manageAdmin();          
                     break;
                 }
                 case "B": {
+                    checkStatus(t.time());
                     manageCustomer();
+                    
                     break;
                 }
                 case "C": {
+                    checkStatus(t.time());
                     manageDriver();
+                    
                     break;
                 }
                 default: {
@@ -57,18 +63,15 @@ public class Main {
         c.display(t.time());
 
         d.display(t.time());
-        
-        
 
     }
 
     public static void manageCustomer() {
-        
+
 //        for (int i = 0; i < c.customer.size(); i++) {
 //            
 //            
 //        }
-        
         System.out.println("\nYou are in customer view now (Enter \"exit\" to go back to homepage):");
         System.out.println("Options :");
         System.out.println("A - Create customer requests");
@@ -116,7 +119,7 @@ public class Main {
                         System.out.println("\nThe request is received, please choose your driver...");
 
 //                        c.displayRatingDriver(c.getCap(customerName), t.time());
-                        c.displayRatingDriver( 1, t.time(), customerName);
+                        c.displayRatingDriver(1, t.time(), customerName);
                         System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
@@ -159,13 +162,16 @@ public class Main {
                     System.out.print("\n>> ");
                     String driverName = scan.nextLine();
 
-                    if (d.findDriver(driverName)) {
+                    if (d.findAvailableDriver(driverName)) {
+                        System.out.println(driverName);
+                        System.out.println(customerName);
                         d.assignCustomer(driverName, customerName, t.time());
                         c.status(customerName, t.time(), "Waiting");
+                        c.asssignDriverTImeToEAT(customerName, driverName);
 
                         System.out.println("\n" + driverName + " is on the way to pick you up.");
-                    } else{
-                        System.out.println("Driver Died");
+                    } else {
+                        System.out.println("Driver died");
                     }
 
                 } else {
@@ -202,25 +208,22 @@ public class Main {
 
                     //this is the hard coded
 //                    d.add(new DriverProfile("John", 5, 3.1174, 101.6781), t.time());
-
 //                    d.display(t.time());
-
                     // this is the soft code/input
-                    try{
+                    try {
                         String driverName = scan.next();
-                        
-                        if(!driverName.equalsIgnoreCase("exit")){
+
+                        if (!driverName.equalsIgnoreCase("exit")) {
                             int cap = scan.nextInt();
                             String[] iniLatLan = scan.next().split(",");
                             double iniLat = Double.parseDouble(iniLatLan[0]);
                             double iniLan = Double.parseDouble(iniLatLan[1]);
 
-                        
                             d.add(new DriverProfile(driverName, cap, iniLat, iniLan), t.time());
-                            
+
                             d.display(t.time());
                         }
-                    } catch(Exception e){
+                    } catch (Exception e) {
                         System.out.println("Error wrong input");
                     }
                     break;
@@ -245,6 +248,33 @@ public class Main {
 
         } while (stop == false);
 
+    }
+    
+    public static void checkStatus(String time){
+
+        ArrayList<CustomerProfile> customer = c.getCustomerArr();
+        ArrayList<DriverProfile> driver = d.getDriverArr();
+        
+        for (CustomerProfile customerProfile : customer) {
+            
+            if(time.compareToIgnoreCase(customerProfile.getChosenEAT()) >= 0){
+                System.out.println("checkStatus");
+            customerProfile.setStatus("Reached");
+            
+                for (DriverProfile driverProfile : driver) {
+                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName())){
+                        driverProfile.setStatus("Available");
+                    }
+                }
+           
+            }
+            else if(time.compareToIgnoreCase(customerProfile.getChosenEAT()) < 0){
+                System.out.println("picked up");
+            customerProfile.setStatus("Picked up");
+            }
+//            System.out.println(customerProfile.getName());
+        }
+        
     }
 
 }
