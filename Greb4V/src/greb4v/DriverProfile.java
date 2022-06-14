@@ -12,6 +12,7 @@ public class DriverProfile extends Profile {
         status = "available";
         rating = 5.00;
         ratingCount = 1;
+        customer = "";
     }
 
     public double getRating() {

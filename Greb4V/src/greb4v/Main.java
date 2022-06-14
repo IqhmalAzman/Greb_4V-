@@ -255,17 +255,34 @@ public class Main {
         ArrayList<CustomerProfile> customer = c.getCustomerArr();
         ArrayList<DriverProfile> driver = d.getDriverArr();
         
+        
+        
         for (CustomerProfile customerProfile : customer) {
             
-            if(time.compareToIgnoreCase(customerProfile.getChosenEAT()) >= 0){
+//            if(time.compareToIgnoreCase(customerProfile.getChosenEAT() ) >= 0 && !customerProfile.getName().equalsIgnoreCase(null)){
+//                System.out.println("checkStatus");
+//            customerProfile.setStatus("Reached");
+//            
+//                for (DriverProfile driverProfile : driver) {
+//                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName()) && !driverProfile.getCustomer().equalsIgnoreCase(null)){
+//                        driverProfile.setStatus("Available");
+//                        
+//                    }
+//                }
+//           
+//            }
+            if(time.compareToIgnoreCase(customerProfile.getChosenEAT() ) >= 0 ){
                 System.out.println("checkStatus");
             customerProfile.setStatus("Reached");
             
                 for (DriverProfile driverProfile : driver) {
-                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName())){
+                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName()) ){
                         driverProfile.setStatus("Available");
+                        driverProfile.setCustomer("");
+                        break;
                     }
                 }
+     
            
             }
             else if(time.compareToIgnoreCase(customerProfile.getChosenEAT()) < 0){
