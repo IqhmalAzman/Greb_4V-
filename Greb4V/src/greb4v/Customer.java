@@ -165,6 +165,16 @@ public class Customer {
         return customer;
     }
     
+    public void setCustomerChosenDriver(String customerName, String driverName){
+        for (CustomerProfile customerProfile : customer) {
+            if(customerProfile.getName().equals(customerName)){
+                customerProfile.setChosenDriver(driverName);
+                break;
+            }
+        }
+        
+    }
+    
     public void displayRatingDriver(int cap, String time, String customerName) {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
