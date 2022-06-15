@@ -8,6 +8,17 @@ public class CustomerProfile extends Profile {
     private double fiLan, fiLong;
     private String chosenEAT;
     private String status;
+    
+    //select
+    private String chosenDriver;
+
+    public String getChosenDriver() {
+        return chosenDriver;
+    }
+
+    public void setChosenDriver(String chosenDriver) {
+        this.chosenDriver = chosenDriver;
+    }
 
     //experimental
     private int customerToDestinationTime;
@@ -22,6 +33,7 @@ public class CustomerProfile extends Profile {
         this.fiLong = fiLong;
         this.chosenEAT = EAT;
         this.status = "Pending";
+        this.chosenDriver = "";
     }
 
     public double getFiLan() {
