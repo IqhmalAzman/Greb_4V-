@@ -33,19 +33,19 @@ public class Main {
             switch (input) {
                 case "A": {
                     checkStatus(t.time());
-                    manageAdmin();          
+                    manageAdmin();
                     break;
                 }
                 case "B": {
                     checkStatus(t.time());
                     manageCustomer();
-                    
+
                     break;
                 }
                 case "C": {
                     checkStatus(t.time());
                     manageDriver();
-                    
+
                     break;
                 }
                 default: {
@@ -67,15 +67,11 @@ public class Main {
     }
 
     public static void manageCustomer() {
-
-//        for (int i = 0; i < c.customer.size(); i++) {
-//            
-//            
-//        }
         System.out.println("\nYou are in customer view now (Enter \"exit\" to go back to homepage):");
         System.out.println("Options :");
         System.out.println("A - Create customer requests");
         System.out.println("B - Update customer requests");
+        System.out.println("C - Rate Driver");
         System.out.print("\n>> ");
 
         String custInput, chooseDriver;
@@ -130,6 +126,7 @@ public class Main {
                             d.assignCustomer(driverName, customerName, t.time());
                             c.status(customerName, t.time(), "Waiting");
                             c.asssignDriverTImeToEAT(customerName, driverName);
+                            c.setCustomerChosenDriver(customerName, driverName);
 
                             System.out.println("\n" + driverName + " is on the way to pick you up.");
                         } else {
@@ -168,12 +165,55 @@ public class Main {
                         d.assignCustomer(driverName, customerName, t.time());
                         c.status(customerName, t.time(), "Waiting");
                         c.asssignDriverTImeToEAT(customerName, driverName);
+                        c.setCustomerChosenDriver(customerName, driverName);
 
                         System.out.println("\n" + driverName + " is on the way to pick you up.");
                     } else {
                         System.out.println("Driver died");
                     }
 
+                } else {
+                    System.out.println("Cannot find Customer");
+                }
+
+                break;
+            }
+
+            case "C": {
+                ArrayList<CustomerProfile> customer = c.getCustomerArr();
+                ArrayList<DriverProfile> driver = d.getDriverArr();
+
+                for (CustomerProfile customerProfile : customer) {
+                    if (customerProfile.getStatus().equals("Reached")) {
+                        System.out.print(customerProfile.getName() + " | " + customerProfile.getChosenDriver() + "\n");
+
+                    }
+                }
+
+                System.out.println("\nEnter the customer name (Enter \"exit\" to go back to homepage):");
+                System.out.print("\n>> ");
+                String customerName = scan.nextLine();
+//                updateCust = scan.nextLine(); for later
+                System.out.println("");
+
+                if (c.findCustomer(customerName)) { //loop to find the customer
+                    for (CustomerProfile customerProfile : customer) {
+                        if (customerProfile.getName().equals(customerName)) {
+                            String driverName = customerProfile.getChosenDriver();
+
+                            for (DriverProfile driverProfile : driver) {
+                                if (driverProfile.getName().equals(driverName)) {
+                                    System.out.println("\nEnter the rating for " + driverName + " (Enter \"exit\" to go back to homepage):");
+                                    System.out.print("\n>> ");
+                                    double rating = scan.nextDouble();
+                                    driverProfile.setRating(rating);
+                                }
+                            }
+                            break;
+                        }
+                    }
+
+                    //loop to find the driver to rate
                 } else {
                     System.out.println("Cannot find Customer");
                 }
@@ -249,49 +289,37 @@ public class Main {
         } while (stop == false);
 
     }
-    
-    public static void checkStatus(String time){
+
+    public static void checkStatus(String time) {
 
         ArrayList<CustomerProfile> customer = c.getCustomerArr();
         ArrayList<DriverProfile> driver = d.getDriverArr();
-        
-        
-        
+
         for (CustomerProfile customerProfile : customer) {
-            
-//            if(time.compareToIgnoreCase(customerProfile.getChosenEAT() ) >= 0 && !customerProfile.getName().equalsIgnoreCase(null)){
-//                System.out.println("checkStatus");
-//            customerProfile.setStatus("Reached");
-//            
-//                for (DriverProfile driverProfile : driver) {
-//                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName()) && !driverProfile.getCustomer().equalsIgnoreCase(null)){
-//                        driverProfile.setStatus("Available");
-//                        
-//                    }
-//                }
-//           
-//            }
-            if(time.compareToIgnoreCase(customerProfile.getChosenEAT() ) >= 0 ){
+            if (time.compareToIgnoreCase(customerProfile.getChosenEAT()) >= 0) {
                 System.out.println("checkStatus");
-            customerProfile.setStatus("Reached");
-            
+                customerProfile.setStatus("Reached");
+
                 for (DriverProfile driverProfile : driver) {
-                    if(driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName()) ){
+                    if (driverProfile.getCustomer().equalsIgnoreCase(customerProfile.getName())) {
                         driverProfile.setStatus("Available");
+                        driverProfile.setInitialLatitude(customerProfile.getFiLan());
+                        driverProfile.setInitialLongitude(customerProfile.getFiLong());
                         driverProfile.setCustomer("");
                         break;
                     }
                 }
-     
-           
-            }
-            else if(time.compareToIgnoreCase(customerProfile.getChosenEAT()) < 0){
+
+            } else if (time.compareToIgnoreCase(customerProfile.getChosenEAT()) < 0) {
                 System.out.println("picked up");
-            customerProfile.setStatus("Picked up");
+                customerProfile.setStatus("Picked up");
             }
-//            System.out.println(customerProfile.getName());
         }
-        
+
+    }
+
+    public static void rateDriver() {
+
     }
 
 }
