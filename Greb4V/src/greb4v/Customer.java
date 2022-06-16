@@ -9,11 +9,7 @@ import java.util.ArrayList;
 public class Customer {
     ArrayList<CustomerProfile> customer = new ArrayList<CustomerProfile>();
     String lastUpdatedTime;
-    
-    //experimentation
     ArrayList<DriverProfile> driver; 
-    
-    //until here
 
     public void setDriverProfile(String customerName, ArrayList<DriverProfile> driver, String currentTime) {
         if (customer.size() == 0) {
@@ -46,12 +42,10 @@ public class Customer {
             this.lastUpdatedTime = lastUpdatedTime;
 
             for (CustomerProfile customerProfile : customer) {
-                int i = 0;
                 if (customerProfile.getName().equalsIgnoreCase(name)) {
                     customerProfile.setStatus(status);
                     break;
                 }
-                i++;
             }
         }
     }
@@ -76,7 +70,6 @@ public class Customer {
     public boolean findCustomer(String name) {
         for (CustomerProfile customerProfile : customer) {
             if (name.equalsIgnoreCase(customerProfile.getName())) {
-                System.out.println("findCustomer" + customerProfile.getName());
                 return true;
             }
         }
@@ -113,12 +106,8 @@ public class Customer {
     public void asssignDriverTImeToEAT(String customerName, String driverName){
         for (CustomerProfile customerProfile : customer) {
             if (customerName.equals(customerProfile.getName()) ) {
-                System.out.println("assignDriver customerName: " + customerName);
-                System.out.println("assignDriver customerProfile.getName(): " + customerProfile.getName());
                 for(int i = 0; i < driver.size(); i++){
                     if((driver.get(i).getName()).equalsIgnoreCase(driverName)){
-                        System.out.println("test");
-                        System.out.println("Chosen EAT: " + customerProfile.getDriverEATBasedOnName(driverName));
                         customerProfile.setChosenEAT(customerProfile.getDriverEATBasedOnName(driverName));
                         break;
                     }

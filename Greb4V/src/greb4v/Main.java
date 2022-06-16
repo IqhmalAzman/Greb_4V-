@@ -8,6 +8,8 @@ public class Main {
     public static Customer c = new Customer();
     public static Driver d = new Driver();
     public static Time t = new Time();
+    public static ArrayList<CustomerProfile> customer = c.getCustomerArr();
+    public static ArrayList<DriverProfile> driver = d.getDriverArr();
 
     public static void main(String[] args) {
 
@@ -105,24 +107,17 @@ public class Main {
                                 t.time());
                         scan.nextLine();
 
-//                        System.out.println(t.time());
-//                        c.customerToDestination(customerName, t.time());
-                        // experimental
                         c.setDriverProfile(customerName, d.referDriver(), t.time());
 
-                        //until here
-                        //c.add(new CustomerProfile("John", 1730, 5, 2.3, 2.3, 4.3, 4.3));
                         System.out.println("\nThe request is received, please choose your driver...");
 
-//                        c.displayRatingDriver(c.getCap(customerName), t.time());
+//                        c.displayRatingDriver(c.getCap(customerName), t.time(), customerName);
                         c.displayRatingDriver(1, t.time(), customerName);
                         System.out.println("\nEnter the driver name you want to select (Enter \"exit\" to go back to homepage):");
                         System.out.print("\n>> ");
                         String driverName = scan.nextLine();
 
                         if (d.findAvailableDriver(driverName)) {
-                            System.out.println(driverName);
-                            System.out.println(customerName);
                             d.assignCustomer(driverName, customerName, t.time());
                             c.status(customerName, t.time(), "Waiting");
                             c.asssignDriverTImeToEAT(customerName, driverName);
@@ -130,7 +125,7 @@ public class Main {
 
                             System.out.println("\n" + driverName + " is on the way to pick you up.");
                         } else {
-                            System.out.println("Driver died");
+                            System.out.println("Driver doesn't exist");
                         }
                     }
                 } catch (Exception e) {
@@ -147,7 +142,6 @@ public class Main {
                 System.out.println("\nEnter the customer name you want to update (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
                 String customerName = scan.nextLine();
-//                updateCust = scan.nextLine(); for later
                 System.out.println("");
 
                 if (c.findCustomer(customerName)) {
@@ -169,7 +163,7 @@ public class Main {
 
                         System.out.println("\n" + driverName + " is on the way to pick you up.");
                     } else {
-                        System.out.println("Driver died");
+                        System.out.println("Driver doesn't exist");
                     }
 
                 } else {
@@ -182,6 +176,8 @@ public class Main {
             case "C": {
                 ArrayList<CustomerProfile> customer = c.getCustomerArr();
                 ArrayList<DriverProfile> driver = d.getDriverArr();
+                
+                System.out.println("\nRate Your Driver: ");
 
                 for (CustomerProfile customerProfile : customer) {
                     if (customerProfile.getStatus().equals("Reached")) {
@@ -193,30 +189,9 @@ public class Main {
                 System.out.println("\nEnter the customer name (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
                 String customerName = scan.nextLine();
-//                updateCust = scan.nextLine(); for later
                 System.out.println("");
-
-                if (c.findCustomer(customerName)) { //loop to find the customer
-                    for (CustomerProfile customerProfile : customer) {
-                        if (customerProfile.getName().equals(customerName)) {
-                            String driverName = customerProfile.getChosenDriver();
-
-                            for (DriverProfile driverProfile : driver) {
-                                if (driverProfile.getName().equals(driverName)) {
-                                    System.out.println("\nEnter the rating for " + driverName + " (Enter \"exit\" to go back to homepage):");
-                                    System.out.print("\n>> ");
-                                    double rating = scan.nextDouble();
-                                    driverProfile.setRating(rating);
-                                }
-                            }
-                            break;
-                        }
-                    }
-
-                    //loop to find the driver to rate
-                } else {
-                    System.out.println("Cannot find Customer");
-                }
+                
+                rateDriver(customerName);
 
                 break;
             }
@@ -291,10 +266,6 @@ public class Main {
     }
 
     public static void checkStatus(String time) {
-
-        ArrayList<CustomerProfile> customer = c.getCustomerArr();
-        ArrayList<DriverProfile> driver = d.getDriverArr();
-
         for (CustomerProfile customerProfile : customer) {
             if (time.compareToIgnoreCase(customerProfile.getChosenEAT()) >= 0) {
                 System.out.println("checkStatus");
@@ -318,8 +289,30 @@ public class Main {
 
     }
 
-    public static void rateDriver() {
+    public static void rateDriver(String customerName) {
+        Scanner scan = new Scanner(System.in);
 
+        if (c.findCustomer(customerName)) { //loop to find the customer
+            for (CustomerProfile customerProfile : customer) {
+                if (customerProfile.getName().equals(customerName)) {
+                    String driverName = customerProfile.getChosenDriver();
+
+                    for (DriverProfile driverProfile : driver) {
+                        if (driverProfile.getName().equals(driverName)) {
+                            System.out.println("\nEnter the rating for " + driverName + " (Rate 0 to 5):");
+                            System.out.print("\n>> ");
+                            double rating = scan.nextDouble();
+                            driverProfile.setRating(rating);
+                        }
+                    }
+                    break;
+                }
+            }
+
+            //loop to find the driver to rate
+        } else {
+            System.out.println("Cannot find Customer");
+        }
     }
 
 }

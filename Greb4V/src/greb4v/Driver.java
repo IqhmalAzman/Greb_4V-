@@ -63,7 +63,6 @@ public class Driver {
                 if (driverProfile.getName().equals(driverName)) {
                     driverProfile.setStatus("Not Available");
                     driverProfile.setCustomer(customerName);
-                    System.out.println(" assignCustomer" + customerName + " " + driverProfile.getCustomer());
                     break;
                 }
             }
@@ -100,21 +99,4 @@ public class Driver {
         System.out.println("=========================================================================================================");
     }
 
-//    public void displayRating(int cap, String time) {
-//        System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
-//        System.out.println("(Current time : " + time + " )");
-//
-//        System.out.println("=============================================================================================================================");
-//        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
-//                "Capacity", "Location", "Customer", "Rating");
-//        for (DriverProfile driverProfile : driver) {
-//
-//            if (cap <= driverProfile.getCapacity()) {
-//                System.out.printf("%-20s %-20s %-20s %-20s\n", driverProfile.getName(),
-//                        driverProfile.getCapacity(), 0000, driverProfile.getRating());
-//            }
-//        }
-//
-//        System.out.println("=============================================================================================================================");
-//    }
 }

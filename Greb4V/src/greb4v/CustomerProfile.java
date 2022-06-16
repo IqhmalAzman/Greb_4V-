@@ -82,25 +82,8 @@ public class CustomerProfile extends Profile {
             driverToCustomerTime.add(time);
         }
 
-//        for (int i = 0; i < driverName.size(); i++) {
-//            System.out.println("\n All Driver to Customer: ");
-//            System.out.println(driverName.get(i) + " : " + driverToCustomerTime.get(i));
-//        }
     }
 
-//    public ArrayList<String> setAllPossibleEAT(String currentTime){
-//        for (int i = 0; i < driverToCustomerTime.size(); i++) {
-//            allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime +  this.driverToCustomerTime.get(i)), currentTime));
-//        }
-//        
-////        System.out.println("\n All Possible EAT: ");
-//        
-////        for (String string : allPossibleEAT) {
-////            System.out.println(string);
-////        }
-//        
-//        return this.allPossibleEAT;
-//    }
     public void setAllPossibleEAT(String currentTime) {
         for (int i = 0; i < driverToCustomerTime.size(); i++) {
             allPossibleEAT.add(calc.currentTimeEAT((this.customerToDestinationTime + this.driverToCustomerTime.get(i)), currentTime));
@@ -116,9 +99,7 @@ public class CustomerProfile extends Profile {
         return "error";
     }
 
-    public String getDriverEATBasedOnIndex(int index) {
-        System.out.println(allPossibleEAT.size());
-        
+    public String getDriverEATBasedOnIndex(int index) {       
         return allPossibleEAT.get(index);
     }
 
