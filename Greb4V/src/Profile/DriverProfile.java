@@ -1,20 +1,19 @@
 package Profile;
 
-import Profile.Profile;
-
 public class DriverProfile extends Profile {
 
-    private String status, customer;
-    private double rating;
+    private String status, customerName;
+    private double rating; //this is the customer input of the driver rating to be calculated later and it is what being displayed
     private int ratingCount;
-    double total = 5.00;
+    double sumOfAllRating;
 
-    public DriverProfile(String name, int cap, double iniLan, double iniLong) {
-        super(name, cap, iniLan, iniLong);
+    public DriverProfile(String name, int capacity, double initialLatitude, double initialLongitude) {
+        super(name, capacity, initialLatitude, initialLongitude);
         status = "Available";
-        rating = 5.00;
-        ratingCount = 1;
-        customer = "";
+        rating = round((sumOfAllRating/ratingCount), 1); //we initialise the driver rating to be 5.0
+        ratingCount = 1; //this is a counter for the number of time a driver is rated
+        customerName = ""; //customer name is initialised as empty string
+        sumOfAllRating = 5.0; //the sum of all rating
     }
 
     public double getRating() {
@@ -23,8 +22,8 @@ public class DriverProfile extends Profile {
 
     public void setRating(double rate) {
         ratingCount++;
-        total = total + rate;
-        rating = round((total/ratingCount), 1); 
+        sumOfAllRating = sumOfAllRating + rate;
+        rating = round((sumOfAllRating/ratingCount), 1); 
     }
 
     public String getStatus() {
@@ -35,14 +34,15 @@ public class DriverProfile extends Profile {
         this.status = status;
     }
 
-    public String getCustomer() {
-        return customer;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
     
+    //this is a method to display rating in one decimal place
     private static double round(double value, int precision) {
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
