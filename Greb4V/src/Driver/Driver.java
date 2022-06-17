@@ -63,7 +63,7 @@ public class Driver {
             for (DriverProfile driverProfile : driver) {
                 if (driverProfile.getName().equals(driverName)) {
                     driverProfile.setStatus("Not Available");
-                    driverProfile.setCustomer(customerName);
+                    driverProfile.setCustomerName(customerName);
                     break;
                 }
             }
