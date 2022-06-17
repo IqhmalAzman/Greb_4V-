@@ -5,11 +5,11 @@ public abstract class Profile{
     private int capacity;
     private double initialLatitude, initialLongitude;
 
-    public Profile(String name, int cap, double iniLan, double iniLong) {
+    public Profile(String name, int capacity, double initialLatitude, double initialLongitude) {
         this.name = name;
-        this.capacity = cap;
-        this.initialLatitude = iniLan;
-        this.initialLongitude = iniLong;
+        this.capacity = capacity;
+        this.initialLatitude = initialLatitude;
+        this.initialLongitude = initialLongitude;
     }
 
     public String getName() {
