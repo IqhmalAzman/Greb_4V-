@@ -1,4 +1,6 @@
-package greb4v;
+package Profile;
+
+import Profile.Profile;
 
 public class DriverProfile extends Profile {
 
@@ -9,7 +11,7 @@ public class DriverProfile extends Profile {
 
     public DriverProfile(String name, int cap, double iniLan, double iniLong) {
         super(name, cap, iniLan, iniLong);
-        status = "available";
+        status = "Available";
         rating = 5.00;
         ratingCount = 1;
         customer = "";

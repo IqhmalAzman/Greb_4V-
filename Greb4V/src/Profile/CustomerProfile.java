@@ -1,5 +1,8 @@
-package greb4v;
+package Profile;
 
+import Utils.Calculation;
+import Profile.DriverProfile;
+import Profile.Profile;
 import java.util.ArrayList;
 
 public class CustomerProfile extends Profile {

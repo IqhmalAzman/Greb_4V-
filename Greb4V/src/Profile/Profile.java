@@ -1,6 +1,6 @@
-package greb4v;
+package Profile;
 
-public class Profile{
+public abstract class Profile{
     private String name;
     private int capacity;
     private double initialLatitude, initialLongitude;
