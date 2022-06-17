@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Customer;
 
 import Profile.CustomerProfile;
@@ -10,19 +6,19 @@ import java.util.ArrayList;
 
 public class Customer {
     ArrayList<CustomerProfile> customer = new ArrayList<CustomerProfile>();
-    String lastUpdatedTime;
     ArrayList<DriverProfile> driver; 
-
+    String lastUpdatedTime;
+    
     public void setDriverProfile(String customerName, ArrayList<DriverProfile> driver, String currentTime) {
-        if (customer.size() == 0) {
+        if (customer.isEmpty()) {
             System.out.println("List is empty");
         } else {
-            this.lastUpdatedTime = lastUpdatedTime;
+            this.lastUpdatedTime = currentTime;
 
             for (CustomerProfile customerProfile : customer) {
                 if (customerProfile.getName().equals(customerName)) {
                     this.driver = driver;
-                    customerProfile.setDriver(driver);
+                    customerProfile.setDriver(driver); //this is a method to store driver array in CustomerProfile
                     customerProfile.customerToDestination();
                     customerProfile.driverToCustomer();
                     customerProfile.setAllPossibleEAT(currentTime);
@@ -38,7 +34,7 @@ public class Customer {
     }
 
     public void status(String name, String lastUpdatedTime, String status) {
-        if (customer.size() == 0) {
+        if (customer.isEmpty()) {
             System.out.println("List is empty");
         } else {
             this.lastUpdatedTime = lastUpdatedTime;
@@ -53,7 +49,7 @@ public class Customer {
     }
 
     public void remove(String name, String lastUpdatedTime) {
-        if (customer.size() == 0) {
+        if (customer.isEmpty()) {
             System.out.println("List is empty");
         } else {
             this.lastUpdatedTime = lastUpdatedTime;
@@ -78,25 +74,25 @@ public class Customer {
         return false;
     }
 
-    public double finLat(String name) {
+    public double setFinalLatitude(String customerName) {
         for (CustomerProfile customerProfile : customer) {
-            if (findCustomer(name)) {
-                return customerProfile.getFiLan();
+            if (findCustomer(customerName)) {
+                return customerProfile.getFinalLatitude();
             }
         }
         return 0.0;
     }
 
-    public double finLong(String name) {
+    public double setFinalLongitude(String customerName) {
         for (CustomerProfile customerProfile : customer) {
-            if (findCustomer(name)) {
-                return customerProfile.getFiLong();
+            if (findCustomer(customerName)) {
+                return customerProfile.getFinalLongitude();
             }
         }
         return 0.0;
     }
 
-    public int getCap(String name) {
+    public int getCapacity(String name) {
         for (CustomerProfile customerProfile : customer) {
             if (findCustomer(name)) {
                 return customerProfile.getCapacity();
@@ -124,7 +120,7 @@ public class Customer {
                 return customerProfile.getDriverEATBasedOnIndex(index);
             }
         }
-        return "0000";
+        return "Error";
     }
 
     public void display(String time) {
@@ -137,13 +133,13 @@ public class Customer {
         for (CustomerProfile customerProfile : customer) {
             System.out.printf("%-20s %-20s %-25s %-20s %-20s %-20s\n", customerProfile.getName(), customerProfile.getStatus(),
                     customerProfile.getChosenEAT(), customerProfile.getCapacity(), customerProfile.getInitialLatitude() + ","
-                    + customerProfile.getInitialLongitude(), customerProfile.getFiLan() + "," + customerProfile.getFiLong());
+                    + customerProfile.getInitialLongitude(), customerProfile.getFinalLatitude() + "," + customerProfile.getFinalLongitude());
         }
 
         System.out.println("==================================================================================================================================");
     }
     
-    public int getCustomerPositionInArr(String customerName){
+    public int getCustomerPositionInArray(String customerName){
         for (int i = 0; i < customer.size(); i++) {
             if(customer.get(i).getName().equals(customerName)){
                 return i;
@@ -152,7 +148,7 @@ public class Customer {
         return -1;
     }
     
-    public ArrayList<CustomerProfile> getCustomerArr(){
+    public ArrayList<CustomerProfile> getCustomerArray(){
         return customer;
     }
     
@@ -173,8 +169,6 @@ public class Customer {
         System.out.println("=============================================================================================================================");
         System.out.printf("%-20s %-20s %-20s %-20s\n", "Driver", "Capacity",
                 "EAT", "Reputation");
-        
-//        customer.get(getCustomerPositionInArr(customerName)).getDriverEATBasedOnName(driverName)
         
         for (int i = 0; i < driver.size(); i++) {
             if(cap <= driver.get(i).getCapacity() && driver.get(i).getStatus().equalsIgnoreCase("Available")){
