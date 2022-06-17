@@ -92,9 +92,9 @@ public class Driver {
         System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
                 "Capacity", "Location", "Customer");
         for (DriverProfile driverProfile : driver) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
                     driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(),
-                    driverProfile.getCustomer());
+                    driverProfile.getCustomer(), driverProfile.getRating());
         }
 
         System.out.println("=========================================================================================================");

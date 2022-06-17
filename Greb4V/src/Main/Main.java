@@ -28,6 +28,7 @@ public class Main {
             System.out.println("\nwelcome to Greb Application!");
             System.out.println("Options : ");
             System.out.println("(Current time : " + t.time() + " )"); // add time here
+            System.out.println("TO EXIT ENTER ANYTHING OTHER THAN OPTIONS AVAILABLE");
             System.out.println("A - View System Dashboard");
             System.out.println("B - enter Customer View");
             System.out.println("C - Add / Remove Driver");
@@ -168,11 +169,15 @@ public class Main {
 
                         System.out.println("\n" + driverName + " is on the way to pick you up.");
                     } else {
-                        System.out.println("Driver doesn't exist");
+                        System.out.println("*******************");
+                        System.out.println("*ERROR WRONG INPUT*");
+                        System.out.println("*******************");
                     }
 
                 } else {
-                    System.out.println("Cannot find Customer");
+                    System.out.println("*******************");
+                    System.out.println("*ERROR WRONG INPUT*");
+                    System.out.println("*******************");
                 }
 
                 break;
@@ -181,7 +186,7 @@ public class Main {
             case "C": {
                 ArrayList<CustomerProfile> customer = c.getCustomerArr();
                 ArrayList<DriverProfile> driver = d.getDriverArr();
-                
+
                 System.out.println("\nRate Your Driver: ");
 
                 for (CustomerProfile customerProfile : customer) {
@@ -193,10 +198,17 @@ public class Main {
 
                 System.out.println("\nEnter the customer name (Enter \"exit\" to go back to homepage):");
                 System.out.print("\n>> ");
-                String customerName = scan.nextLine();
-                System.out.println("");
-                
-                rateDriver(customerName);
+
+                try {
+                    String customerName = scan.nextLine();
+                    System.out.println("");
+                    rateDriver(customerName);
+
+                } catch (Exception e) {
+                    System.out.println("*******************");
+                    System.out.println("*ERROR WRONG INPUT*");
+                    System.out.println("*******************");
+                }
 
                 break;
             }
@@ -244,15 +256,30 @@ public class Main {
                             d.display(t.time());
                         }
                     } catch (Exception e) {
-                        System.out.println("Error wrong input");
+                        System.out.println("*******************");
+                        System.out.println("*ERROR WRONG INPUT*");
+                        System.out.println("*******************");
                     }
                     break;
                 }
                 case "B": {
+                    System.out.println("");
                     scan = new Scanner(System.in);
 
                     d.display(t.time());
-                    d.remove(scan.nextLine(), t.time());
+
+                    System.out.println("\nEnter the driver name you want to delete (Enter \"Exit\" to go back to homepage): ");
+                    System.out.print(">> ");
+
+                    try {
+                        d.remove(scan.nextLine(), t.time());
+
+                        System.out.println("");
+                    } catch (Exception e) {
+                        System.out.println("*******************");
+                        System.out.println("*ERROR WRONG INPUT*");
+                        System.out.println("*******************");
+                    }
 
                     d.display(t.time());
                     break;
@@ -306,8 +333,15 @@ public class Main {
                         if (driverProfile.getName().equals(driverName)) {
                             System.out.println("\nEnter the rating for " + driverName + " (Rate 0 to 5):");
                             System.out.print("\n>> ");
-                            double rating = scan.nextDouble();
-                            driverProfile.setRating(rating);
+
+                            try {
+                                double rating = scan.nextDouble();
+                                driverProfile.setRating(rating);
+                            } catch (Exception e) {
+                                System.out.println("*******************");
+                                System.out.println("*ERROR WRONG INPUT*");
+                                System.out.println("*******************");
+                            }
                         }
                     }
                     break;
