@@ -88,16 +88,16 @@ public class Driver {
         System.out.println("Requests List (List Last Updated Time : " + lastUpdatedTime + ")");
         System.out.println("(Current time : " + time + " )");
 
-        System.out.println("=========================================================================================================");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
-                "Capacity", "Location", "Customer");
+        System.out.println("===================================================================================================================");
+        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "Driver", "Status",
+                "Capacity", "Location", "Customer", "Reputation");
         for (DriverProfile driverProfile : driver) {
             System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", driverProfile.getName(), driverProfile.getStatus(),
                     driverProfile.getCapacity(), driverProfile.getInitialLatitude() + "," + driverProfile.getInitialLongitude(),
                     driverProfile.getCustomer(), driverProfile.getRating());
         }
 
-        System.out.println("=========================================================================================================");
+        System.out.println("===================================================================================================================");
     }
 
 }
